@@ -37,7 +37,7 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 
 		OrderSale os = saveOrderSale(itens);
 		
-		updateTotalPrice(itens, os);
+		updateTotalPrice(os.getId());
 		
 		LOG.info("Order save as success.");
 
@@ -45,8 +45,10 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 	}
 
 
-	private void updateTotalPrice(List<OrderItem> itens, OrderSale os) {
-		final BigDecimal totalPrice = promotionService.getTotalPrice(itens, getById(os.getId()));
+	private void updateTotalPrice(Long orderId) {
+		OrderSale os = getById(orderId);
+		final BigDecimal totalPrice = promotionService.getTotalPrice(os);
+		
 		os.setTotalPrice(totalPrice);
 		repository.save(os);
 	}

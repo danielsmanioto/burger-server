@@ -73,7 +73,7 @@ public class OrderSaleControllerTest {
 		
 		mvc.perform(post(URL_POST_FINISH_SALE_ORDER).contentType(CONTENT_TYPE).content(json))
 				.andExpect(status().isCreated())
-				.andExpect(jsonPath("$.totalPrice", equalTo(4.05)));
+				.andExpect(jsonPath("$.totalPrice", equalTo(4.5)));
 	}
 
 	@Test
@@ -85,37 +85,34 @@ public class OrderSaleControllerTest {
 		final String json = gson.toJson(orderDto);
 
 		mvc.perform(post(URL_POST_FINISH_SALE_ORDER).contentType(CONTENT_TYPE).content(json))
-				.andExpect(status().isCreated());
-
-		OrderSale os = service.getById(2L); // TODO mudar id
-
-		assertNotNull(os);
-		assertNotNull(os.getId());
-		assertNotNull(os.getItens());
-
-		assertEquals(3, os.getItens().size());
-		assertEquals(BigDecimal.valueOf(4.9), os.getTotalPrice());
+				.andExpect(status().isCreated())
+				.andExpect(jsonPath("$.totalPrice", equalTo(4.41)));
 	}
 
 	@Test
 	public void checkSaleAlotOfMeat() throws Exception {
 		final Burger xBurgerLigth = burgerService.getXBurger();
-		final List<Ingredient> aditionals = Arrays.asList(ingService.getLettuce());
+		final List<Ingredient> aditionals = Arrays.asList(ingService.getMeatBurger(), ingService.getMeatBurger());
 		final OrderSaleDto orderDto = new OrderSaleDto(xBurgerLigth, aditionals);
 
 		final String json = gson.toJson(orderDto);
 
 		mvc.perform(post(URL_POST_FINISH_SALE_ORDER).contentType(CONTENT_TYPE).content(json))
-				.andExpect(status().isCreated());
+				.andExpect(status().isCreated())
+				.andExpect(jsonPath("$.totalPrice", equalTo((4.50 + 3 + 3)-3)));
+	}
+	
+	@Test
+	public void checkSaleAlotOfCheese() throws Exception {
+		final Burger xBurgerLigth = burgerService.getXBurger();
+		final List<Ingredient> aditionals = Arrays.asList(ingService.getCheese(), ingService.getCheese(), ingService.getCheese());
+		final OrderSaleDto orderDto = new OrderSaleDto(xBurgerLigth, aditionals);
 
-		OrderSale os = service.getById(2L); // TODO mudar id
+		final String json = gson.toJson(orderDto);
 
-		assertNotNull(os);
-		assertNotNull(os.getId());
-		assertNotNull(os.getItens());
-
-		assertEquals(4, os.getItens().size());
-		assertEquals(BigDecimal.valueOf(4.9), os.getTotalPrice());
+		mvc.perform(post(URL_POST_FINISH_SALE_ORDER).contentType(CONTENT_TYPE).content(json))
+				.andExpect(status().isCreated())
+				.andExpect(jsonPath("$.totalPrice", equalTo((4.50 + 1.5 + 1.5 + 1.5)-1.5 )));
 	}
 
 }
