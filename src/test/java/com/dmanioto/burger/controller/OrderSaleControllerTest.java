@@ -1,10 +1,13 @@
 package com.dmanioto.burger.controller;
 
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.math.BigDecimal;
@@ -69,20 +72,11 @@ public class OrderSaleControllerTest {
 		final Burger xBurger = burgerService.getXBurger();
 		final List<Ingredient> aditionals = new ArrayList<>();
 		final OrderSaleDto orderDto = new OrderSaleDto(xBurger, aditionals);
-
 		final String json = gson.toJson(orderDto);
-
+		
 		mvc.perform(post(URL_POST_FINISH_SALE_ORDER).contentType(CONTENT_TYPE).content(json))
-				.andExpect(status().isCreated());
-
-		OrderSale os = service.getById(1L); // TODO mudar id
-
-		assertNotNull(os);
-		assertNotNull(os.getId());
-		assertNotNull(os.getItens());
-
-		assertEquals(2, os.getItens().size());
-		assertEquals(BigDecimal.valueOf(4.5), os.getPriceTotal());
+				.andExpect(status().isCreated())
+				.andExpect(jsonPath("$.priceTotal", equalTo(4.05)));
 	}
 
 	@Test
@@ -109,7 +103,7 @@ public class OrderSaleControllerTest {
 	@Test
 	public void checkSaleAlotOfMeat() throws Exception {
 		final Burger xBurgerLigth = burgerService.getXBurger();
-		final List<Ingredient> aditionals = Arrays.asList(ingService.getMeatBurger(), ingService.getMeatBurger());
+		final List<Ingredient> aditionals = Arrays.asList(ingService.getLettuce());
 		final OrderSaleDto orderDto = new OrderSaleDto(xBurgerLigth, aditionals);
 
 		final String json = gson.toJson(orderDto);

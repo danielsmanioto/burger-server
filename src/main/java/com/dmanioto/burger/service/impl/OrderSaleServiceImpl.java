@@ -20,17 +20,24 @@ import com.dmanioto.burger.service.OrderSaleService;
 public class OrderSaleServiceImpl implements OrderSaleService {
 
 	private final Logger LOG = LoggerFactory.getLogger(OrderSaleServiceImpl.class);
-	
+
 	@Autowired
 	private OrderSaleRepository repository;
-	
+
 	@Autowired
 	private OrderItemService orderItemService;
 
 	public OrderSale finishOrder(OrderSaleDto dto) {
 		List<OrderItem> itens = saveItensOrderSale(dto);
-		
+
 		OrderSale os = saveOrderSale(itens);
+
+		// aplicar promocoes
+//		int countLettuce = 0;
+//		int countBacon = 0;
+//		for(OrderItem item : itens) {
+//		}
+//		
 		
 		LOG.info("Order save as success.");
 
@@ -45,25 +52,27 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 
 	private List<OrderItem> saveItensOrderSale(OrderSaleDto dto) {
 		List<OrderItem> itens = new ArrayList<>();
-		
+
 		// salvar itens do burger
 		for (Ingredient ingredient : dto.getBurger().getIngredients()) {
 			OrderItem item = new OrderItem(ingredient.getId(), ingredient.getPrice());
 			orderItemService.save(item);
-			
-			OrderItem orderItem =  orderItemService.getOrderItem(item);
+
+			OrderItem orderItem = orderItemService.getOrderItem(item);
 			itens.add(orderItem);
 		}
-		
+
 		// salvar itens adicionais
-		for (Ingredient ingredient : dto.getAditionals()) {
-			OrderItem item = new OrderItem(ingredient.getId(), ingredient.getPrice());
-			orderItemService.save(item);
-			
-			OrderItem orderItem =  orderItemService.getOrderItem(item);
-			itens.add(orderItem);
+		if (dto.getAditionals() != null) {
+			for (Ingredient ingredient : dto.getAditionals()) {
+				OrderItem item = new OrderItem(ingredient.getId(), ingredient.getPrice());
+				orderItemService.save(item);
+
+				OrderItem orderItem = orderItemService.getOrderItem(item);
+				itens.add(orderItem);
+			}
 		}
-		
+
 		return itens;
 	}
 
@@ -78,7 +87,7 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 	}
 
 	@Override
-	public OrderSale getById(long id) {
+	public OrderSale getById(Long id) {
 		return repository.findById(id).get();
 	}
 
