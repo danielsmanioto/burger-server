@@ -2,6 +2,7 @@ package com.dmanioto.burger.service.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class OrderSaleServiceImplTest {
 		assertNotNull(os.getItens());
 		
 		assertEquals(3, os.getItens().size());
-		assertEquals(BigDecimal.valueOf(6.5), os.getPriceTotal());
+		assertTrue(os.getTotalPrice().compareTo(BigDecimal.valueOf(6.5))==0);
 	}
 	
 	@Test
@@ -59,7 +60,7 @@ public class OrderSaleServiceImplTest {
 		assertNotNull(os.getItens());
 
 		assertEquals(2, os.getItens().size());
-		assertEquals(BigDecimal.valueOf(4.5), os.getPriceTotal());
+		assertTrue(os.getTotalPrice().compareTo(BigDecimal.valueOf(4.5))==0);
 	}
 	
 	@Test
@@ -75,7 +76,7 @@ public class OrderSaleServiceImplTest {
 		assertNotNull(os.getItens());
 
 		assertEquals(3, os.getItens().size());
-		assertEquals(BigDecimal.valueOf(5.3), os.getPriceTotal());
+		assertTrue(os.getTotalPrice().compareTo(BigDecimal.valueOf(5.3))==0);
 	}
 	
 	@Test
@@ -91,7 +92,7 @@ public class OrderSaleServiceImplTest {
 		assertNotNull(os.getItens());
 
 		assertEquals(4, os.getItens().size());
-		assertEquals(BigDecimal.valueOf(7.3), os.getPriceTotal());
+		assertTrue(os.getTotalPrice().compareTo(BigDecimal.valueOf(7.3))==0);
 	}
 	
 }

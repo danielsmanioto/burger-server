@@ -8,8 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -23,8 +21,8 @@ public class OrderItem {
 	@ManyToOne
 	private OrderSale orderSale;
 	
-	@Autowired
-	private Long ingredient;
+	@ManyToOne
+	private Ingredient ingredient;
 	
 	private BigDecimal priceSale; 
 	
@@ -32,11 +30,11 @@ public class OrderItem {
 		// Constructor default
 	}
 	
-	public OrderItem(Long ingredient, BigDecimal price) {
+	public OrderItem(Ingredient ingredient, BigDecimal price) {
 		this.ingredient = ingredient;
 		this.priceSale = price;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -45,11 +43,11 @@ public class OrderItem {
 		this.id = id;
 	}
 	
-	public Long getIngredient() {
+	public Ingredient getIngredient() {
 		return ingredient;
 	}
 	
-	public void setIngredient(Long ingredient) {
+	public void setIngredient(Ingredient ingredient) {
 		this.ingredient = ingredient;
 	}
 	
@@ -108,7 +106,8 @@ public class OrderItem {
 
 	@Override
 	public String toString() {
-		return "OrderItem [id=" + id + ", orderSale=" + orderSale + ", priceSale=" + priceSale + "]";
+		return "OrderItem [id=" + id + ", orderSale=" + orderSale + ", ingredient=" + ingredient + ", priceSale="
+				+ priceSale + "]";
 	}
 	
 }

@@ -23,6 +23,8 @@ public class OrderSale {
 	@ManyToMany
 	private List<OrderDiscount> discounts;
 	
+	private BigDecimal totalPrice;
+	
 	public OrderSale() {
 		// Constructor default
 	}
@@ -54,15 +56,15 @@ public class OrderSale {
 	public void setDiscounts(List<OrderDiscount> discounts) {
 		this.discounts = discounts;
 	}
-
-	public BigDecimal getPriceTotal() {
-		double prince = 0;
-		for(OrderItem i : itens) {
-			prince += i.getPriceSale().doubleValue();
-		}
-		return BigDecimal.valueOf(prince);
+	
+	public BigDecimal getTotalPrice() {
+		return totalPrice;
 	}
-
+	
+	public void setTotalPrice(BigDecimal totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -97,6 +99,14 @@ public class OrderSale {
 	@Override
 	public String toString() {
 		return "OrderSale [id=" + id + ", itens=" + itens + ", discounts=" + discounts + "]";
+	}
+
+	public BigDecimal getTotalPriceItens() {
+		double prince = 0;
+		for(OrderItem i : itens) {
+			prince += i.getPriceSale().doubleValue();
+		}
+		return BigDecimal.valueOf(prince);
 	}
 	
 }

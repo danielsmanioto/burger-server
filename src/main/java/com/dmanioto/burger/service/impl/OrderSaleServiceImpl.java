@@ -1,5 +1,6 @@
 package com.dmanioto.burger.service.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import com.dmanioto.burger.model.dto.OrderSaleDto;
 import com.dmanioto.burger.repository.OrderSaleRepository;
 import com.dmanioto.burger.service.OrderItemService;
 import com.dmanioto.burger.service.OrderSaleService;
+import com.dmanioto.burger.service.PromotionDiscount;
 
 @Service
 public class OrderSaleServiceImpl implements OrderSaleService {
@@ -26,23 +28,29 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 
 	@Autowired
 	private OrderItemService orderItemService;
-
+	
+	@Autowired
+	private PromotionDiscount promotionService;
+	
 	public OrderSale finishOrder(OrderSaleDto dto) {
 		List<OrderItem> itens = saveItensOrderSale(dto);
 
 		OrderSale os = saveOrderSale(itens);
-
-		// aplicar promocoes
-//		int countLettuce = 0;
-//		int countBacon = 0;
-//		for(OrderItem item : itens) {
-//		}
-//		
+		
+		updateTotalPrice(itens, os);
 		
 		LOG.info("Order save as success.");
 
 		return repository.findById(os.getId()).get();
 	}
+
+
+	private void updateTotalPrice(List<OrderItem> itens, OrderSale os) {
+		final BigDecimal totalPrice = promotionService.getTotalPrice(itens, getById(os.getId()));
+		os.setTotalPrice(totalPrice);
+		repository.save(os);
+	}
+	
 
 	private OrderSale saveOrderSale(List<OrderItem> itens) {
 		OrderSale os = new OrderSale(itens);
@@ -55,7 +63,7 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 
 		// salvar itens do burger
 		for (Ingredient ingredient : dto.getBurger().getIngredients()) {
-			OrderItem item = new OrderItem(ingredient.getId(), ingredient.getPrice());
+			OrderItem item = new OrderItem(ingredient, ingredient.getPrice());
 			orderItemService.save(item);
 
 			OrderItem orderItem = orderItemService.getOrderItem(item);
@@ -65,7 +73,7 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 		// salvar itens adicionais
 		if (dto.getAditionals() != null) {
 			for (Ingredient ingredient : dto.getAditionals()) {
-				OrderItem item = new OrderItem(ingredient.getId(), ingredient.getPrice());
+				OrderItem item = new OrderItem(ingredient, ingredient.getPrice());
 				orderItemService.save(item);
 
 				OrderItem orderItem = orderItemService.getOrderItem(item);

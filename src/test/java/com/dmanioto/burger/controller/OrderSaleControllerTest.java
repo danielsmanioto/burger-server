@@ -1,11 +1,8 @@
 package com.dmanioto.burger.controller;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -76,7 +73,7 @@ public class OrderSaleControllerTest {
 		
 		mvc.perform(post(URL_POST_FINISH_SALE_ORDER).contentType(CONTENT_TYPE).content(json))
 				.andExpect(status().isCreated())
-				.andExpect(jsonPath("$.priceTotal", equalTo(4.05)));
+				.andExpect(jsonPath("$.totalPrice", equalTo(4.05)));
 	}
 
 	@Test
@@ -97,7 +94,7 @@ public class OrderSaleControllerTest {
 		assertNotNull(os.getItens());
 
 		assertEquals(3, os.getItens().size());
-		assertEquals(BigDecimal.valueOf(4.9), os.getPriceTotal());
+		assertEquals(BigDecimal.valueOf(4.9), os.getTotalPrice());
 	}
 
 	@Test
@@ -118,7 +115,7 @@ public class OrderSaleControllerTest {
 		assertNotNull(os.getItens());
 
 		assertEquals(4, os.getItens().size());
-		assertEquals(BigDecimal.valueOf(4.9), os.getPriceTotal());
+		assertEquals(BigDecimal.valueOf(4.9), os.getTotalPrice());
 	}
 
 }

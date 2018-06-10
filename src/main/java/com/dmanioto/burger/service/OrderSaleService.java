@@ -16,6 +16,4 @@ public interface OrderSaleService {
 
 	OrderSale getById(Long id);
 	
-	
-	
 }

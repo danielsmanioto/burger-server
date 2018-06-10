@@ -22,6 +22,10 @@ public class Ingredient {
 	@ManyToOne
 	private Burger burger;
 	
+	@JsonIgnore
+	@ManyToOne
+	private OrderItem orderItem;
+	
 	public Ingredient() {
 		// Constructor default
 	}
@@ -62,6 +66,14 @@ public class Ingredient {
 
 	public void setBurger(Burger burger) {
 		this.burger = burger;
+	}
+	
+	public OrderItem getOrderItem() {
+		return orderItem;
+	}
+	
+	public void setOrderItem(OrderItem orderItem) {
+		this.orderItem = orderItem;
 	}
 
 	@Override
