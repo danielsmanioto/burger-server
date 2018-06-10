@@ -10,7 +10,7 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Burger {
-
+	
 	@Id
 	private Long id;
 
@@ -51,6 +51,14 @@ public class Burger {
 
 	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
+	}
+	
+	public BigDecimal getPriceTotal() {
+		double prince = 0;
+		for(Ingredient i : ingredients) {
+			prince += i.getPrice().doubleValue();
+		}
+		return BigDecimal.valueOf(prince);
 	}
 
 	@Override
@@ -93,14 +101,6 @@ public class Burger {
 	@Override
 	public String toString() {
 		return "Burger [id=" + id + ", description=" + description + ", ingredients=" + ingredients + "]";
-	}
-
-	public BigDecimal getPriceTotal() {
-		double prince = 0;
-		for(Ingredient i : ingredients) {
-			prince += i.getPrice().doubleValue();
-		}
-		return BigDecimal.valueOf(prince);
 	}
 	
 	public enum BurgerEnum {

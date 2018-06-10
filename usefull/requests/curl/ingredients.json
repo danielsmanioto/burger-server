@@ -1,0 +1,6 @@
+HTTP/1.1 200 
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Sat, 09 Jun 2018 14:22:37 GMT
+
+[{"id":1,"description":"LETTUCE","price":0.40},{"id":2,"description":"BACON","price":2.00},{"id":3,"description":"MEAT BURGER","price":3.00},{"id":4,"description":"EGG","price":0.80},{"id":5,"description":"CHEESE","price":1.50}]

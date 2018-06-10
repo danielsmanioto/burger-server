@@ -1,0 +1,6 @@
+HTTP/1.1 200 
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Sat, 09 Jun 2018 14:24:04 GMT
+
+[{"id":1,"description":"X-Bacon","ingredients":[{"id":2,"description":"BACON","price":2.00},{"id":3,"description":"MEAT BURGER","price":3.00},{"id":5,"description":"CHEESE","price":1.50}],"priceTotal":6.5},{"id":2,"description":"X-Burger","ingredients":[{"id":3,"description":"MEAT BURGER","price":3.00},{"id":5,"description":"CHEESE","price":1.50}],"priceTotal":4.5},{"id":3,"description":"X-Egg","ingredients":[{"id":4,"description":"EGG","price":0.80},{"id":3,"description":"MEAT BURGER","price":3.00},{"id":5,"description":"CHEESE","price":1.50}],"priceTotal":5.3},{"id":4,"description":"X-EggBacon","ingredients":[{"id":2,"description":"BACON","price":2.00},{"id":4,"description":"EGG","price":0.80},{"id":3,"description":"MEAT BURGER","price":3.00},{"id":5,"description":"CHEESE","price":1.50}],"priceTotal":7.3}]

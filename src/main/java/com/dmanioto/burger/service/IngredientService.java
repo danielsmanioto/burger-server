@@ -1,5 +1,7 @@
 package com.dmanioto.burger.service;
 
+import java.util.List;
+
 import com.dmanioto.burger.model.Ingredient;
 
 public interface IngredientService {
@@ -15,6 +17,8 @@ public interface IngredientService {
 	Ingredient getEgg();
 	
 	Ingredient getCheese();
+
+	List<Ingredient> getAll();
 	
 	
 }

@@ -1,6 +1,7 @@
 package com.dmanioto.burger.service.impl;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,11 @@ public class IngredientServiceImpl implements IngredientService {
 	@Override
 	public Ingredient getCheese() {
 		return repository.findById(IngredientEnum.CHEESE.getId()).get();
+	}
+
+	@Override
+	public List<Ingredient> getAll() {
+		return repository.findAll();
 	}
 
 }

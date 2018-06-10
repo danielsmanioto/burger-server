@@ -1,5 +1,7 @@
 package com.dmanioto.burger.service;
 
+import java.util.List;
+
 import com.dmanioto.burger.model.Burger;
 
 public interface BurgerService {
@@ -13,5 +15,7 @@ public interface BurgerService {
 	Burger getXEggBacon();
 
 	void createPreDefinedBurgers();
+
+	List<Burger> getAll();
 
 }

@@ -1,6 +1,7 @@
 package com.dmanioto.burger.service.impl;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,11 @@ public class BurgerServiceImpl implements BurgerService {
 	@Override
 	public Burger getXEggBacon() {
 		return repository.findById(BurgerEnum.X_EGG_BACON.getId()).get();
+	}
+
+	@Override
+	public List<Burger> getAll() {
+		return repository.findAll();
 	}
 	
 }
