@@ -31,18 +31,67 @@ public class OrderSaleServiceImplTest {
 	private BurgerService burgerService;
 	
 	@Test
-	public void checkPromotionBasicWithBurger() {
+	public void checkSaleBasicWithXBacon() {
+		final Burger xBacon = burgerService.getXBacon();
+		final List<Ingredient> aditionals = new ArrayList<>(); 
+		final OrderSaleDto dto = new OrderSaleDto(xBacon, aditionals);
+		
+		final OrderSale os = service.finishOrder(dto);
+
+		assertNotNull(os);
+		assertNotNull(os.getId());
+		assertNotNull(os.getItens());
+		
+		assertEquals(3, os.getItens().size());
+		assertEquals(BigDecimal.valueOf(6.5), os.getPriceTotal());
+	}
+	
+	@Test
+	public void checkSaleBasicWithXBurger() {
 		final Burger xBurger = burgerService.getXBurger();
-		final List<Ingredient> aditionals = new ArrayList<>(); //Arrays.asList(ingService.getLettuce());
+		final List<Ingredient> aditionals = new ArrayList<>();
 		OrderSaleDto dto = new OrderSaleDto(xBurger, aditionals);
 		
 		final OrderSale os = service.finishOrder(dto);
-		
-		assertEquals(1L, os.getId(), 0.5);
+
 		assertNotNull(os);
+		assertNotNull(os.getId());
 		assertNotNull(os.getItens());
+
 		assertEquals(2, os.getItens().size());
 		assertEquals(BigDecimal.valueOf(4.5), os.getPriceTotal());
+	}
+	
+	@Test
+	public void checkSaleBasicWithXEGG() {
+		final Burger xEgg = burgerService.getXEgg();
+		final List<Ingredient> aditionals = new ArrayList<>(); 
+		final OrderSaleDto dto = new OrderSaleDto(xEgg, aditionals);
+		
+		final OrderSale os = service.finishOrder(dto);
+		
+		assertNotNull(os);
+		assertNotNull(os.getId());
+		assertNotNull(os.getItens());
+
+		assertEquals(3, os.getItens().size());
+		assertEquals(BigDecimal.valueOf(5.3), os.getPriceTotal());
+	}
+	
+	@Test
+	public void checkSaleBasicWithXggBacon() {
+		final Burger xBurger = burgerService.getXEggBacon();
+		final List<Ingredient> aditionals = new ArrayList<>(); 
+		final OrderSaleDto dto = new OrderSaleDto(xBurger, aditionals);
+		
+		final OrderSale os = service.finishOrder(dto);
+
+		assertNotNull(os);
+		assertNotNull(os.getId());
+		assertNotNull(os.getItens());
+
+		assertEquals(4, os.getItens().size());
+		assertEquals(BigDecimal.valueOf(7.3), os.getPriceTotal());
 	}
 	
 }
