@@ -20,10 +20,10 @@ public class BurgerController {
 	
 	@GetMapping
 	public ResponseEntity<List<Burger>> getAll() {
-		List<Burger> ingredients = service.getAll();
+		
+		List<Burger> burgers = service.getAll();
 
-		return ResponseEntity.ok(ingredients);
+		return ResponseEntity.ok(burgers);
 	}
-	
 	
 }

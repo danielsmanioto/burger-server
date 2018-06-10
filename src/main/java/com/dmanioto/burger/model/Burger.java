@@ -124,7 +124,7 @@ public class Burger {
 		public String getDescription() {
 			return description;
 		}
-
+		
 	}
 	
 }

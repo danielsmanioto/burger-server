@@ -1,6 +1,5 @@
 package com.dmanioto.burger.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +25,15 @@ public class OrderSaleController {
 	
 	@PostMapping
 	public ResponseEntity<Void> finishOrderSale(@RequestBody OrderSaleDto orderSale) {
+		
 		service.finishOrder(orderSale);
+		
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
 	
 	@GetMapping
 	public ResponseEntity<List<OrderSale>> getAll() {
+		
 		final List<OrderSale> orders = service.getAll();
 
 		return ResponseEntity.ok(orders);
@@ -39,6 +41,7 @@ public class OrderSaleController {
 	
 	@GetMapping("/itens")
 	public ResponseEntity<List<OrderItem>> getItens() {
+		
 		final List<OrderItem> itens = service.getAllItens();
 
 		return ResponseEntity.ok(itens);
