@@ -80,9 +80,9 @@ public class OrderSaleServiceImplTest {
 	
 	@Test
 	public void checkSaleBasicWithXggBacon() {
-		final Burger xBurger = burgerService.getXEggBacon();
+		final Burger xEggBacon = burgerService.getXEggBacon();
 		final List<Ingredient> aditionals = new ArrayList<>(); 
-		final OrderSaleDto dto = new OrderSaleDto(xBurger, aditionals);
+		final OrderSaleDto dto = new OrderSaleDto(xEggBacon, aditionals);
 		
 		final OrderSale os = service.finishOrder(dto);
 

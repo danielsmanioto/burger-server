@@ -1,8 +1,14 @@
 package com.dmanioto.burger.controller;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,9 +26,11 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.dmanioto.burger.model.Burger;
 import com.dmanioto.burger.model.Ingredient;
+import com.dmanioto.burger.model.OrderSale;
 import com.dmanioto.burger.model.dto.OrderSaleDto;
 import com.dmanioto.burger.service.BurgerService;
 import com.dmanioto.burger.service.IngredientService;
+import com.dmanioto.burger.service.OrderSaleService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -38,16 +46,19 @@ public class OrderSaleControllerTest {
 	private MockMvc mvc;
 
 	private Gson gson = new GsonBuilder().create();
-	
+
 	@Autowired
 	private WebApplicationContext context;
-	
+
+	@Autowired
+	private OrderSaleService service;
+
 	@Autowired
 	private BurgerService burgerService;
 
 	@Autowired
 	private IngredientService ingService;
-	
+
 	@Before
 	public void setup() {
 		mvc = MockMvcBuilders.webAppContextSetup(context).build();
@@ -55,42 +66,65 @@ public class OrderSaleControllerTest {
 
 	@Test
 	public void finishOrderWithBurgerOfMenu() throws Exception {
-		OrderSaleDto xBurgerDto = getXburgerDto();
-		final String json = gson.toJson(xBurgerDto);
-		
-		mvc.perform(post(URL_POST_FINISH_SALE_ORDER)
-				.contentType(CONTENT_TYPE)
-				.content(json))
-			.andExpect(status()
-					.isCreated());
+		final Burger xBurger = burgerService.getXBurger();
+		final List<Ingredient> aditionals = new ArrayList<>();
+		final OrderSaleDto orderDto = new OrderSaleDto(xBurger, aditionals);
 
+		final String json = gson.toJson(orderDto);
+
+		mvc.perform(post(URL_POST_FINISH_SALE_ORDER).contentType(CONTENT_TYPE).content(json))
+				.andExpect(status().isCreated());
+
+		OrderSale os = service.getById(1L); // TODO mudar id
+
+		assertNotNull(os);
+		assertNotNull(os.getId());
+		assertNotNull(os.getItens());
+
+		assertEquals(2, os.getItens().size());
+		assertEquals(BigDecimal.valueOf(4.5), os.getPriceTotal());
 	}
-	
+
 	@Test
 	public void finishOrderWithBurgerOfPromotionLigth() throws Exception {
-		final OrderSaleDto order = getXburgerDto();
-		final String json = gson.toJson(order);
-		
-		mvc.perform(post(URL_POST_FINISH_SALE_ORDER)
-						.contentType(CONTENT_TYPE)
-						.content(json))
-					.andExpect(status()
-							.isCreated());
+		final Burger xBurgerLigth = burgerService.getXBurger();
+		final List<Ingredient> aditionals = Arrays.asList(ingService.getLettuce());
+		final OrderSaleDto orderDto = new OrderSaleDto(xBurgerLigth, aditionals);
+
+		final String json = gson.toJson(orderDto);
+
+		mvc.perform(post(URL_POST_FINISH_SALE_ORDER).contentType(CONTENT_TYPE).content(json))
+				.andExpect(status().isCreated());
+
+		OrderSale os = service.getById(2L); // TODO mudar id
+
+		assertNotNull(os);
+		assertNotNull(os.getId());
+		assertNotNull(os.getItens());
+
+		assertEquals(3, os.getItens().size());
+		assertEquals(BigDecimal.valueOf(4.9), os.getPriceTotal());
 	}
-	
-	// -------------
-	private OrderSaleDto getXburgerDto() {
-		final Burger xBurger = burgerService.getXBurger();
-		OrderSaleDto xBurgerDto = new OrderSaleDto(xBurger);
-		return xBurgerDto;
+
+	@Test
+	public void checkSaleAlotOfMeat() throws Exception {
+		final Burger xBurgerLigth = burgerService.getXBurger();
+		final List<Ingredient> aditionals = Arrays.asList(ingService.getMeatBurger(), ingService.getMeatBurger());
+		final OrderSaleDto orderDto = new OrderSaleDto(xBurgerLigth, aditionals);
+
+		final String json = gson.toJson(orderDto);
+
+		mvc.perform(post(URL_POST_FINISH_SALE_ORDER).contentType(CONTENT_TYPE).content(json))
+				.andExpect(status().isCreated());
+
+		OrderSale os = service.getById(2L); // TODO mudar id
+
+		assertNotNull(os);
+		assertNotNull(os.getId());
+		assertNotNull(os.getItens());
+
+		assertEquals(4, os.getItens().size());
+		assertEquals(BigDecimal.valueOf(4.9), os.getPriceTotal());
 	}
-	
-	private OrderSaleDto getXbaconDto() {
-		final Burger xBurger = burgerService.getXBacon();
-		final List<Ingredient> itens = Arrays.asList(ingService.getLettuce());
-		OrderSaleDto xBurgerDto = new OrderSaleDto(xBurger, itens);
-		return xBurgerDto;
-	}
-	
 
 }

@@ -19,6 +19,9 @@ public class OrderSale {
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<OrderItem> itens;
+
+	@ManyToMany
+	private List<OrderDiscount> discounts;
 	
 	public OrderSale() {
 		// Constructor default
@@ -27,7 +30,7 @@ public class OrderSale {
 	public OrderSale(List<OrderItem> itens) {
 		this.itens = itens;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -39,9 +42,17 @@ public class OrderSale {
 	public List<OrderItem> getItens() {
 		return itens;
 	}
-	
+
 	public void setItens(List<OrderItem> itens) {
 		this.itens = itens;
+	}
+
+	public List<OrderDiscount> getDiscounts() {
+		return discounts;
+	}
+
+	public void setDiscounts(List<OrderDiscount> discounts) {
+		this.discounts = discounts;
 	}
 
 	public BigDecimal getPriceTotal() {
@@ -82,10 +93,10 @@ public class OrderSale {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "OrderSale [id=" + id + ", itens=" + itens + "]";
+		return "OrderSale [id=" + id + ", itens=" + itens + ", discounts=" + discounts + "]";
 	}
 	
 }

@@ -11,13 +11,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.dmanioto.burger.model.Burger;
+import com.dmanioto.burger.service.BurgerService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BurgerServiceImplTest {
 	
 	@Autowired
-	private BurgerServiceImpl burgerServiceImpl;
+	private BurgerService burgerServiceImpl;
 	
 	@Test
 	public void checkPriceBacon() {

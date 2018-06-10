@@ -12,8 +12,8 @@ import com.dmanioto.burger.model.Ingredient;
 import com.dmanioto.burger.model.OrderItem;
 import com.dmanioto.burger.model.OrderSale;
 import com.dmanioto.burger.model.dto.OrderSaleDto;
-import com.dmanioto.burger.repository.OrderItemRepository;
 import com.dmanioto.burger.repository.OrderSaleRepository;
+import com.dmanioto.burger.service.OrderItemService;
 import com.dmanioto.burger.service.OrderSaleService;
 
 @Service
@@ -23,17 +23,16 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 	
 	@Autowired
 	private OrderSaleRepository repository;
-
+	
 	@Autowired
-	private OrderItemRepository itemRepository;
+	private OrderItemService orderItemService;
 
-	@Override
 	public OrderSale finishOrder(OrderSaleDto dto) {
 		List<OrderItem> itens = saveItensOrderSale(dto);
-
+		
 		OrderSale os = saveOrderSale(itens);
 		
-		LOG.info("Order save has success.");
+		LOG.info("Order save as success.");
 
 		return repository.findById(os.getId()).get();
 	}
@@ -46,13 +45,25 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 
 	private List<OrderItem> saveItensOrderSale(OrderSaleDto dto) {
 		List<OrderItem> itens = new ArrayList<>();
+		
+		// salvar itens do burger
 		for (Ingredient ingredient : dto.getBurger().getIngredients()) {
 			OrderItem item = new OrderItem(ingredient.getId(), ingredient.getPrice());
-			itemRepository.save(item);
+			orderItemService.save(item);
 			
-			OrderItem orderItem = itemRepository.findById(item.getId()).get();
+			OrderItem orderItem =  orderItemService.getOrderItem(item);
 			itens.add(orderItem);
 		}
+		
+		// salvar itens adicionais
+		for (Ingredient ingredient : dto.getAditionals()) {
+			OrderItem item = new OrderItem(ingredient.getId(), ingredient.getPrice());
+			orderItemService.save(item);
+			
+			OrderItem orderItem =  orderItemService.getOrderItem(item);
+			itens.add(orderItem);
+		}
+		
 		return itens;
 	}
 
@@ -63,7 +74,12 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 
 	@Override
 	public List<OrderItem> getAllItens() {
-		return itemRepository.findAll();
+		return orderItemService.getAll();
+	}
+
+	@Override
+	public OrderSale getById(long id) {
+		return repository.findById(id).get();
 	}
 
 }

@@ -13,5 +13,7 @@ public interface OrderSaleService {
 	List<OrderSale> getAll();
 
 	List<OrderItem> getAllItens();
+
+	OrderSale getById(long id);
 	
 }
