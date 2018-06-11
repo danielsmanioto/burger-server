@@ -21,8 +21,8 @@ https://github.com/danielsmanioto/burger-server
 
 # Justificativa e documentação
 <ul>
+  <li>Justificativa do design da aplicação em --> justificativa_design_codigo.pdf</li>
   <li>Os requisitos estão em --> requisitos.pdf</li>
-  <li>Justificativa do design da aplicação em --> Relatório justificativa sobre o Design do Código do Código.pdf</li>
 </ul>  
 
 <b>Requisitos:</b>
