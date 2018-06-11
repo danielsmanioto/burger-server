@@ -14,7 +14,6 @@ https://github.com/danielsmanioto/burger-server
   <li>mvn spring-boot:run (para iniciar a aplicação)
   <li>Baixar a aplicação client em https://github.com/danielsmanioto/burger-client</li>
   <li>Para abrir a aplicação client basta abrir o index.html em um browser</li>
-  <li>Para abrir a aplicação client basta abrir o index.html em um browser</li>
   <li>É possível validar os methodos HTTP usando o client postman basta importar o arquivo --> burger-server\useful\requests\postman</li>
   <li>É possível validar os methodos HTTP gets executar os .sh em --> burger-server\useful\requests\curl</li>
 </ul>
@@ -25,11 +24,11 @@ https://github.com/danielsmanioto/burger-server
 </p>
 <p>
 	<b>SOLID:​</b> Usado os princípios de SOLID para mapeamento e implementação de todas as classes
-	com objetivo de manter o sistema escavável, desacoplado.
+	com objetivo de manter o sistema escalável, desacoplado.
 </p>
 <p>
 	<b>MVC:</b>​ Organização em camadas para desacoplar as regras corretamente
-	<p>Controllerou Resource: Chamada da regra de negócio e disponibilização em Json para
+	<p>Controller ou Resource: Chamada da regra de negócio e disponibilização em Json para
 	o externo;</p>
 	<p>Service: Regra de negócio;</p>
 	<p>Repository ou DAO: Regra e persistência com banco de dados ou qualquer que seja o
@@ -37,7 +36,7 @@ https://github.com/danielsmanioto/burger-server
 	<p>Model: Java bean.</p>
 </p>
 <p>
-	<b>TDD:</b>​ Uso de testes unitários automatizado para garantir a qualidade do código em pequenos
+	<b>TDD:</b>​ Uso de testes unitários automatizados para garantir a qualidade do código em pequenos
 	blocos e prática em escrever o código antes da regra. Com objetivo final de reduzir o
 	acoplamento e ter um sistema com alta coesão e escalável.
 </p>
