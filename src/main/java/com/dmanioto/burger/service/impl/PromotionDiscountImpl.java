@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.dmanioto.burger.model.OrderItem;
 import com.dmanioto.burger.model.OrderSale;
-import com.dmanioto.burger.model.Ingredient;
 import com.dmanioto.burger.model.Ingredient.IngredientEnum;
 import com.dmanioto.burger.service.IngredientService;
 import com.dmanioto.burger.service.PromotionDiscount;
@@ -49,14 +48,14 @@ public class PromotionDiscountImpl implements PromotionDiscount {
 				countCheese++;
 		}
 		
-		if (isLigth(lettuce, bacon)) {
-			discount += totalPrice * 0.10;
-		}
-		
 	  	discount += ingredientService.getMeatBurger().getPrice().doubleValue() * (countMetBurger / 3);
 
 	  	discount += ingredientService.getCheese().getPrice().doubleValue() * (countCheese / 3);
-
+	  	
+	  	if (isLigth(lettuce, bacon)) {
+			discount += totalPrice * 0.10;
+		}
+	  	
 		return discount;
 	}
 

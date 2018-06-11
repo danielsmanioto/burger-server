@@ -18,4 +18,6 @@ public interface BurgerService {
 
 	List<Burger> getAll();
 
+	Burger getById(Long id);
+
 }

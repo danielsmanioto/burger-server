@@ -1,13 +1,10 @@
 package com.dmanioto.burger.controller;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,11 +23,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.dmanioto.burger.model.Burger;
 import com.dmanioto.burger.model.Ingredient;
-import com.dmanioto.burger.model.OrderSale;
 import com.dmanioto.burger.model.dto.OrderSaleDto;
 import com.dmanioto.burger.service.BurgerService;
 import com.dmanioto.burger.service.IngredientService;
-import com.dmanioto.burger.service.OrderSaleService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -49,9 +44,6 @@ public class OrderSaleControllerTest {
 
 	@Autowired
 	private WebApplicationContext context;
-
-	@Autowired
-	private OrderSaleService service;
 
 	@Autowired
 	private BurgerService burgerService;

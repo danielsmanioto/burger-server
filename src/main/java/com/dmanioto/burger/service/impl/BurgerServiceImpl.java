@@ -73,4 +73,9 @@ public class BurgerServiceImpl implements BurgerService {
 		return repository.findAll();
 	}
 
+	@Override
+	public Burger getById(Long id) {
+		return repository.findById(id).get();
+	}
+
 }

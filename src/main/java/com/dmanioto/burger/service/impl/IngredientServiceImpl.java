@@ -62,4 +62,9 @@ public class IngredientServiceImpl implements IngredientService {
 		return repository.findAll();
 	}
 
+	@Override
+	public Ingredient getById(Long id) {
+		return repository.findById(id).get();
+	}
+
 }

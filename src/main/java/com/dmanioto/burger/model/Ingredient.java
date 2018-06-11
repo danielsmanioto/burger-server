@@ -128,7 +128,7 @@ public class Ingredient {
 	public enum IngredientEnum {
 		LETTUCE(1L, "Alface"), 
 		BACON(2L, "Bacon"), 
-		MEAT_BURGER(3L, "Hamburger de Carne"), 
+		MEAT_BURGER(3L, "Hamburguer de Carne"), 
 		EGG(4L, "Ovo"), 
 		CHEESE(5L, "Queijo");
 		

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,13 +26,15 @@ public class OrderSaleController {
 	@Autowired
 	private OrderSaleService service;
 	
+	@CrossOrigin
 	@GetMapping("/{id}")
 	public ResponseEntity<OrderSale> getById(@PathVariable("id") Long id) {
 		OrderSale orderSale = service.getById(id);
 		
 		return ResponseEntity.ok(orderSale);
 	}
-	
+
+	@CrossOrigin
 	@PostMapping
 	public ResponseEntity<?> finishOrderSale(@RequestBody OrderSaleDto orderSale) {
 		OrderSale orderResponse = service.finishOrder(orderSale);
@@ -41,6 +44,7 @@ public class OrderSaleController {
 		return ResponseEntity.created(uri).body(orderResponse);
 	}
 	
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<OrderSale>> getAll() {
 		
@@ -49,6 +53,7 @@ public class OrderSaleController {
 		return ResponseEntity.ok(orders);
 	}
 	
+	@CrossOrigin
 	@GetMapping("/itens")
 	public ResponseEntity<List<OrderItem>> getItens() {
 		final List<OrderItem> itens = service.getAllItens();

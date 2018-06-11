@@ -19,6 +19,7 @@ public interface IngredientService {
 	Ingredient getCheese();
 
 	List<Ingredient> getAll();
-	
+
+	Ingredient getById(Long id);
 	
 }
