@@ -6,7 +6,7 @@ Burger Sale - Server Side
 https://github.com/danielsmanioto/burger-client
 
 <b>Aplicação server</b> 
-https://github.com/danielsmanioto/burger-client
+https://github.com/danielsmanioto/burger-server
 
 # Instruções de como executar
 <ul>
@@ -17,8 +17,13 @@ https://github.com/danielsmanioto/burger-client
   <li>Para abrir a aplicação client basta abrir o index.html em um browser</li>
   <li>É possível validar os methodos HTTP usando o client postman basta importar o arquivo --> burger-server\useful\requests\postman</li>
   <li>É possível validar os methodos HTTP gets executar os .sh em --> burger-server\useful\requests\curl</li>
-  <li>Os requisitos estão em requisitos.pdf</li>
 </ul>
+
+# Justificativa e documentação
+<ul>
+  <li>Os requisitos estão em --> requisitos.pdf</li>
+  <li>Justificativa do design da aplicação em --> Relatório justificativa sobre o Design do Código do Código.pdf</li>
+</ul>  
 
 <b>Requisitos:</b>
 <ul>
@@ -27,5 +32,5 @@ https://github.com/danielsmanioto/burger-client
   <li>Ter um browser instalado na maquina
 </ul>
 
-burger-server\useful\requests
+
 
