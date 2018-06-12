@@ -16,6 +16,7 @@ https://github.com/danielsmanioto/burger-server
   <li>Para abrir a aplicação client basta abrir o index.html em um browser</li>
   <li>É possível validar os methodos HTTP usando o client postman basta importar o arquivo --> burger-server\useful\requests\postman</li>
   <li>É possível validar os methodos HTTP gets executar os .sh em --> burger-server\useful\requests\curl</li>
+  <li>Acessar o banco de dados --> http://localhost:8080/h2</li>
 </ul>
 
 # Justificativa design da aplicação

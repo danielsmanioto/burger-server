@@ -56,7 +56,7 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 
 	private void updateTotalPrice(Long orderId) {
 		OrderSale os = getById(orderId);
-		final BigDecimal totalPrice = promotionService.getTotalPrice(os);
+		final BigDecimal totalPrice = promotionService.calculeTotalPrice(os);
 		
 		os.setTotalPrice(totalPrice);
 		repository.save(os);

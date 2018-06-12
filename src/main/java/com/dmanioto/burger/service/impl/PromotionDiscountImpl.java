@@ -18,49 +18,57 @@ public class PromotionDiscountImpl implements PromotionDiscount {
 	private IngredientService ingredientService;
 	
 	@Override
-	public BigDecimal getTotalPrice(OrderSale orderSale) {
+	public BigDecimal calculeTotalPrice(OrderSale orderSale) {
 		double totalPrice = orderSale.getTotalPriceItens().doubleValue();
 		
-		double totalDiscount = getValue(orderSale, totalPrice);
+		double totalDiscount = getTotalPriceDiscount(orderSale, totalPrice);
 		
 		totalPrice -= totalDiscount;
 		
 		return BigDecimal.valueOf(totalPrice);
 	}
 	
-	private double getValue(OrderSale os, double totalPrice) {
-		double discount = 0;
-		
-		int lettuce = 0;
-		int bacon = 0;
-		
-		int countCheese = 0;
-		int countMetBurger = 0;
+	private double getTotalPriceDiscount(OrderSale os, double totalPrice) {
+		int qttyLettuce = 0;
+		int qttyBacon = 0;
+		int qttyCheese = 0;
+		int qttyMeatBurger = 0;
 		
 		for (OrderItem item : os.getItens()) {
 			if (IngredientEnum.LETTUCE.getId().equals(item.getIngredient().getId()))
-				lettuce++;
+				qttyLettuce++;
 			else if (IngredientEnum.BACON.getId().equals(item.getIngredient().getId()))
-				bacon++;
+				qttyBacon++;
 			else if (IngredientEnum.MEAT_BURGER.getId().equals(item.getIngredient().getId())) 
-				countMetBurger++;
+				qttyMeatBurger++;
 			else if (IngredientEnum.CHEESE.getId().equals(item.getIngredient().getId())) 
-				countCheese++;
+				qttyCheese++;
 		}
 		
-	  	discount += ingredientService.getMeatBurger().getPrice().doubleValue() * (countMetBurger / 3);
-
-	  	discount += ingredientService.getCheese().getPrice().doubleValue() * (countCheese / 3);
-	  	
-	  	if (isLigth(lettuce, bacon)) {
-			discount += totalPrice * 0.10;
-		}
+		double discount = 0;
+		
+		discount += ligthDiscount(totalPrice, discount, qttyLettuce, qttyBacon);
+	  	discount += aLotOfMeatDiscount(qttyMeatBurger);
+	  	discount += aLotOfCheeseDiscount(qttyCheese);
 	  	
 		return discount;
 	}
 
-	private boolean isLigth(int lettuce, int bacon) {
-		return lettuce > 0 && bacon == 0;
+	private double ligthDiscount(double totalPrice, double discount, int lettuce, int bacon) {
+		final boolean isLight = lettuce > 0 && bacon == 0;
+		if (isLight) {
+			discount += totalPrice * 0.10;
+		}
+		
+		return discount;
+	}
+
+	private double aLotOfCheeseDiscount(int countCheese) {
+		return ingredientService.getCheese().getPrice().doubleValue() * (countCheese / 3);
+	}
+
+	private double aLotOfMeatDiscount(int countMetBurger) {
+		return ingredientService.getMeatBurger().getPrice().doubleValue() * (countMetBurger / 3);
 	}
 
 }

@@ -6,6 +6,6 @@ import com.dmanioto.burger.model.OrderSale;
 
 public interface PromotionDiscount {
 
-	public BigDecimal getTotalPrice(OrderSale orderSale);
+	public BigDecimal calculeTotalPrice(OrderSale orderSale);
 	
 }
