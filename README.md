@@ -1,14 +1,17 @@
 # burger-server
 Burger Sale - Server Side
 
-
 <b>Aplicação client</b>
 https://github.com/danielsmanioto/burger-client
 
 <b>Aplicação server</b> 
 https://github.com/danielsmanioto/burger-server
 
-# Instruções de como executar
+
+# Instruções de como executar com Docker
+docker_run.sh
+
+# Instruções de como executar sem Docker
 <ul>
   <li>mvn test (para verificar os tests)</li>
   <li>mvn spring-boot:run (para iniciar a aplicação)
