@@ -7,19 +7,21 @@ https://github.com/danielsmanioto/burger-client
 <b>Aplicação server</b> 
 https://github.com/danielsmanioto/burger-server
 
-
 # Instruções de como executar com Docker
-docker_run.sh
+execute o arquivo docker_startup.sh (exemplo no linux-> bash docker_startup.sh)
+
+Verificar se API está no ar -> http://localhost:80
 
 # Instruções de como executar sem Docker
 <ul>
-  <li>mvn test (para verificar os tests)</li>
+  <li>mvn clean install (Fazer o build e gerar o artefato target/burger-server-0.0.1-SNAPSHOT.jar)</li>
+  <li>mvn test (para verificar os testes)</li>
   <li>mvn spring-boot:run (para iniciar a aplicação)
   <li>Baixar a aplicação client em https://github.com/danielsmanioto/burger-client</li>
-  <li>Para abrir a aplicação client basta abrir o index.html em um browser</li>
+  <li>Para abrir a aplicação client basta abrir o index.html em um browser (exemplo: Chrome)</li>
   <li>É possível validar os methodos HTTP usando o client postman basta importar o arquivo --> burger-server\useful\requests\postman</li>
   <li>É possível validar os methodos HTTP gets executar os .sh em --> burger-server\useful\requests\curl</li>
-  <li>Acessar o banco de dados --> http://localhost:8080/h2</li>
+  <li>Acessar o banco de dados em memoria --> http://localhost:80/h2</li>
 </ul>
 
 # Justificativa design da aplicação
@@ -54,17 +56,12 @@ docker_run.sh
 	entendimento e auxiliar na evolução do sistema.
 </p>
 
-# Justificativa e documentação
-<ul>
-  <li>Justificativa do design da aplicação em --> justificativa_design_codigo.pdf</li>
-  <li>Os requisitos estão em --> requisitos.pdf</li>
-</ul>  
-
 <b>Requisitos:</b>
 <ul>
   <li>JDK 1.8</li>
   <li>Maven</li>
   <li>Ter um browser instalado na maquina
+  <li>Ter Docker instalado na maquina
 </ul>
 
 
