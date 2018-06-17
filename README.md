@@ -12,6 +12,8 @@ execute o arquivo docker_startup.sh (exemplo no linux-> bash docker_startup.sh)
 
 Verificar se API está no ar -> http://localhost:80
 
+Agora siga os passos na aplicação client
+
 # Instruções de como executar sem Docker
 <ul>
   <li>mvn clean install (Fazer o build e gerar o artefato target/burger-server-0.0.1-SNAPSHOT.jar)</li>

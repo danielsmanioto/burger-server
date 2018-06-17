@@ -1,1 +1,1 @@
-curl -i http://localhost:8080/burgers --> burgers.json
+curl -i http://localhost:80/burgers --> burgers.json

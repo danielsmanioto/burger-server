@@ -1,6 +1,0 @@
-HTTP/1.1 200 
-Content-Type: application/json;charset=UTF-8
-Transfer-Encoding: chunked
-Date: Sun, 10 Jun 2018 13:28:21 GMT
-
-[{"id":1,"itens":[{"id":1,"ingredient":3,"priceSale":3.00},{"id":2,"ingredient":5,"priceSale":1.50}],"priceTotal":4.5}]

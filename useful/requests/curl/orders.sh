@@ -1,1 +1,1 @@
-curl -i http://localhost:8080/orders --> orders.json
+curl -i http://localhost:80/orders --> orders.json

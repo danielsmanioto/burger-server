@@ -1,146 +1,165 @@
 {
-	"info": {
-		"name": "burger-server",
-		"_postman_id": "33ce3ff5-59d2-cb1d-fc06-3bbf78e177f2",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
+	"owner": "434764",
+	"lastUpdatedBy": "434764",
+	"lastRevision": 4049659809,
+	"team": null,
+	"id": "33ce3ff5-59d2-cb1d-fc06-3bbf78e177f2",
+	"name": "burger-server",
+	"description": "",
+	"variables": null,
+	"auth": null,
+	"events": null,
+	"folders_order": [],
+	"order": [
+		"1e5b7950-b186-d253-d48b-8eb4261a96df",
+		"1883759a-667f-7444-b682-b82f844dabbb",
+		"8b20e4c9-8978-1324-34f0-44522855449d",
+		"da57c949-68d2-3ffa-733e-da271c12c266",
+		"b4cacf1c-0655-ad0a-ea98-5097f6883c02",
+		"5ffe9adc-f9f6-978d-7116-b1d59c272f54"
+	],
+	"folders": [],
+	"hasRequests": true,
+	"requests": [
 		{
-			"name": "http://localhost:8080/ingredients",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8080/ingredients",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ingredients"
-					]
-				},
-				"description": ""
-			},
-			"response": []
+			"id": "1883759a-667f-7444-b682-b82f844dabbb",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:80/burgers",
+			"folder": null,
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1529267272395,
+			"name": "http://localhost:80/burgers",
+			"description": null,
+			"collectionId": "33ce3ff5-59d2-cb1d-fc06-3bbf78e177f2",
+			"responses": []
 		},
 		{
-			"name": "http://localhost:8080/burgers",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8080/burgers",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"burgers"
-					]
-				},
-				"description": ""
-			},
-			"response": []
+			"id": "1e5b7950-b186-d253-d48b-8eb4261a96df",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:80/ingredients",
+			"folder": null,
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1529267235237,
+			"name": "http://localhost:80/ingredients",
+			"description": null,
+			"collectionId": "33ce3ff5-59d2-cb1d-fc06-3bbf78e177f2",
+			"responses": []
 		},
 		{
-			"name": "http://localhost:8080/orders",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{  \r\n   \"burger\":{  \r\n      \"id\":2,\r\n      \"description\":\"X-Burger\"\r\n   },\r\n   \"aditionals\":[  \r\n      {  \r\n         \"id\":1,\r\n         \"description\":\"Alface\"\r\n      }\r\n   ]\r\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/orders",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"orders"
-					]
-				},
-				"description": ""
-			},
-			"response": []
+			"id": "5ffe9adc-f9f6-978d-7116-b1d59c272f54",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:80/orders/1",
+			"folder": null,
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1529267383461,
+			"name": "http://localhost:80/orders/1",
+			"description": null,
+			"collectionId": "33ce3ff5-59d2-cb1d-fc06-3bbf78e177f2",
+			"responses": []
 		},
 		{
-			"name": "http://localhost:8080/orders",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8080/orders",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"orders"
-					]
-				},
-				"description": ""
-			},
-			"response": []
+			"id": "8b20e4c9-8978-1324-34f0-44522855449d",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:80/orders",
+			"folder": null,
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1529267294535,
+			"name": "http://localhost:80/orders",
+			"description": null,
+			"collectionId": "33ce3ff5-59d2-cb1d-fc06-3bbf78e177f2",
+			"responses": [],
+			"rawModeData": "{  \r\n   \"burger\":{  \r\n      \"id\":2,\r\n      \"description\":\"X-Burger\"\r\n   },\r\n   \"aditionals\":[  \r\n      {  \r\n         \"id\":1,\r\n         \"description\":\"Alface\"\r\n      }\r\n   ]\r\n}"
 		},
 		{
-			"name": "http://localhost:8080/orders/itens",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8080/orders/itens",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"orders",
-						"itens"
-					]
-				},
-				"description": ""
-			},
-			"response": []
+			"id": "b4cacf1c-0655-ad0a-ea98-5097f6883c02",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:80/orders/itens",
+			"folder": null,
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1529267352608,
+			"name": "http://localhost:80/orders/itens",
+			"description": null,
+			"collectionId": "33ce3ff5-59d2-cb1d-fc06-3bbf78e177f2",
+			"responses": []
 		},
 		{
-			"name": "http://localhost:8080/orders/1",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8080/orders/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"orders",
-						"1"
-					]
-				},
-				"description": ""
-			},
-			"response": []
+			"id": "da57c949-68d2-3ffa-733e-da271c12c266",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:80/orders",
+			"folder": null,
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1529267317781,
+			"name": "http://localhost:80/orders",
+			"description": null,
+			"collectionId": "33ce3ff5-59d2-cb1d-fc06-3bbf78e177f2",
+			"responses": []
 		}
 	]
 }

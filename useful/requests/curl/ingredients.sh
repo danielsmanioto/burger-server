@@ -1,1 +1,1 @@
-curl -i http://localhost:8080/ingredients --> ingredients.json
+curl -i http://localhost:80/ingredients --> ingredients.json
