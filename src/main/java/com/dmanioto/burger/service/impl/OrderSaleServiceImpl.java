@@ -31,68 +31,68 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 
 	@Autowired
 	private OrderItemService orderItemService;
-	
+
 	@Autowired
 	private PromotionDiscount promotionService;
 
 	@Autowired
 	private BurgerService burgerService;
-	
+
 	@Autowired
 	private IngredientService ingredientService;
-	
+
 	public OrderSale finishOrder(OrderSaleDto dto) {
 		List<OrderItem> itens = saveItensOrderSale(dto);
 
 		OrderSale os = saveOrderSale(itens);
-		
+
 		updateTotalPrice(os.getId());
-		
+
 		LOG.info("Order save as success.");
 
 		return repository.findById(os.getId()).get();
 	}
 
-
 	private void updateTotalPrice(Long orderId) {
 		OrderSale os = getById(orderId);
 		final BigDecimal totalPrice = promotionService.calculeTotalPrice(os);
-		
+
 		os.setTotalPrice(totalPrice);
 		repository.save(os);
 	}
-	
 
 	private OrderSale saveOrderSale(List<OrderItem> itens) {
 		OrderSale os = new OrderSale(itens);
 		repository.save(os);
 		return os;
 	}
-	
+
 	private List<OrderItem> saveItensOrderSale(OrderSaleDto dto) {
-		final Burger burger = burgerService.getById(dto.getBurger().getId());		
-		
+		final Burger burger = burgerService.getById(dto.getBurger().getId());
+
 		List<OrderItem> itens = new ArrayList<>();
-		
+
 		// salvar itens do burger
-		for (Ingredient ingredient : burger.getIngredients()) {
+		burger.getIngredients().forEach(ingredient -> {
 			OrderItem item = new OrderItem(ingredient, ingredient.getPrice());
 			orderItemService.save(item);
 
 			OrderItem orderItem = orderItemService.getOrderItem(item);
 			itens.add(orderItem);
-		}
+		});
 
 		// salvar itens adicionais
 		if (dto.getAditionals() != null) {
-			for (Ingredient ingredient : dto.getAditionals()) {
-				Ingredient ingredientAditional = ingredientService.getById(ingredient.getId());		
+
+			dto.getAditionals().forEach(ingredient -> {
+				Ingredient ingredientAditional = ingredientService.getById(ingredient.getId());
 				OrderItem item = new OrderItem(ingredientAditional, ingredientAditional.getPrice());
 				orderItemService.save(item);
 
 				OrderItem orderItem = orderItemService.getOrderItem(item);
 				itens.add(orderItem);
-			}
+			});
+			
 		}
 
 		return itens;

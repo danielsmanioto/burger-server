@@ -23,7 +23,7 @@ Agora siga os passos na aplicação client
   <li>Para abrir a aplicação client basta abrir o index.html em um browser (exemplo: Chrome)</li>
   <li>É possível validar os methodos HTTP usando o client postman basta importar o arquivo --> burger-server\useful\requests\postman</li>
   <li>É possível validar os methodos HTTP gets executar os .sh em --> burger-server\useful\requests\curl</li>
-  <li>Acessar o banco de dados em memoria --> http://localhost:80/h2</li>
+  <li>Acessar o banco de dados em memoria --> http://localhost:<porta>/h2</li>
 </ul>
 
 # Justificativa design da aplicação

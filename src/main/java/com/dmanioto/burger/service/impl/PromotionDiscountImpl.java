@@ -34,6 +34,10 @@ public class PromotionDiscountImpl implements PromotionDiscount {
 		int qttyCheese = 0;
 		int qttyMeatBurger = 0;
 		
+		os.getItens().forEach(item -> {
+			
+		});
+		
 		for (OrderItem item : os.getItens()) {
 			if (IngredientEnum.LETTUCE.getId().equals(item.getIngredient().getId()))
 				qttyLettuce++;
@@ -56,9 +60,8 @@ public class PromotionDiscountImpl implements PromotionDiscount {
 
 	private double ligthDiscount(double totalPrice, double discount, int lettuce, int bacon) {
 		final boolean isLight = lettuce > 0 && bacon == 0;
-		if (isLight) {
+		if (isLight) 
 			discount += totalPrice * 0.10;
-		}
 		
 		return discount;
 	}
