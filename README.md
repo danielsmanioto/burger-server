@@ -7,6 +7,9 @@ https://github.com/danielsmanioto/burger-client
 <b>Aplicação server</b> 
 https://github.com/danielsmanioto/burger-server
 
+#Heroku
+https://dsmanioto-burger-server.herokuapp.com/
+
 # Instruções de como executar com Docker
 execute o arquivo docker_startup.sh (exemplo no linux-> bash docker_startup.sh)
 
