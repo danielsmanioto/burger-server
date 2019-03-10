@@ -7,11 +7,14 @@ https://github.com/danielsmanioto/burger-client
 <b>Aplicação server</b> 
 https://github.com/danielsmanioto/burger-server
 
+#Swagger - Documentação da API
+http://localhost:80/swagger-ui.html
+
 #Heroku
 https://dsmanioto-burger-server.herokuapp.com/
 
 # Instruções de como executar com Docker
-execute o arquivo docker_startup.sh (exemplo no linux-> bash docker_startup.sh)
+execute o arquivo docker_startup.sh (exemplo no linux-> sudo sh docker_startup.sh)
 
 Verificar se API está no ar -> http://localhost:80
 
