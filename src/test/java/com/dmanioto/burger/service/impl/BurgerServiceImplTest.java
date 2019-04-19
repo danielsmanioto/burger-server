@@ -18,29 +18,29 @@ import com.dmanioto.burger.service.BurgerService;
 public class BurgerServiceImplTest {
 	
 	@Autowired
-	private BurgerService burgerService;
+	private BurgerService burgerServiceImpl;
 	
 	@Test
 	public void checkPriceBacon() {
-		Burger xbacon = burgerService.getXBacon();
+		Burger xbacon = burgerServiceImpl.getXBacon();
 		assertEquals(BigDecimal.valueOf(6.5), xbacon.getPriceTotal());
 	}
 	
 	@Test
 	public void checkPriceBurger() {
-		Burger xburger = burgerService.getXBurger();
+		Burger xburger = burgerServiceImpl.getXBurger();
 		assertEquals(BigDecimal.valueOf(4.5), xburger.getPriceTotal());
 	}
 
 	@Test
 	public void checkPricexEggBurger() {
-		Burger xeggbacon = burgerService.getXEggBacon();
+		Burger xeggbacon = burgerServiceImpl.getXEggBacon();
 		assertEquals(BigDecimal.valueOf(7.3), xeggbacon.getPriceTotal());
 	}
 	
 	@Test
 	public void checkPricexEgg() {
-		Burger xegg = burgerService.getXEgg();
+		Burger xegg = burgerServiceImpl.getXEgg();
 		assertEquals(BigDecimal.valueOf(5.3), xegg.getPriceTotal());
 	}
 	
