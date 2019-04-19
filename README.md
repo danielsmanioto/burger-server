@@ -24,7 +24,6 @@ Para parar a aplicação -> stop.sh
 # Instruções de como executar sem Docker
 <ul>
   <li>mvn clean install (Fazer o build e gerar o artefato target/burger-server-0.0.1-SNAPSHOT.jar)</li>
-  <li>mvn test (para verificar os testes)</li>
   <li>mvn spring-boot:run (para iniciar a aplicação)
   <li>Baixar a aplicação client em https://github.com/danielsmanioto/burger-client</li>
   <li>Para abrir a aplicação client basta abrir o index.html em um browser (exemplo: Chrome)</li>
@@ -73,5 +72,11 @@ Para parar a aplicação -> stop.sh
   <li>Ter Docker instalado na maquina
 </ul>
 
+
+<b>Acessando:</b>
+<ul>
+  <li>Client: http://localhost:83/</li>
+  <li>Server: http://localhost:80/</li>
+</ul>
 
 
