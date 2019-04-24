@@ -26,7 +26,6 @@ public class OrderSaleController {
 	@Autowired
 	private OrderSaleService service;
 	
-	@CrossOrigin
 	@GetMapping("/{id}")
 	public ResponseEntity<OrderSale> getById(@PathVariable("id") Long id) {
 		OrderSale orderSale = service.getById(id);
@@ -34,7 +33,6 @@ public class OrderSaleController {
 		return ResponseEntity.ok(orderSale);
 	}
 
-	@CrossOrigin
 	@PostMapping
 	public ResponseEntity<?> finishOrderSale(@RequestBody OrderSaleDto orderSale) {
 		OrderSale orderResponse = service.finishOrder(orderSale);
@@ -44,16 +42,14 @@ public class OrderSaleController {
 		return ResponseEntity.created(uri).body(orderResponse);
 	}
 	
-	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<OrderSale>> getAll() {
-		
+
 		final List<OrderSale> orders = service.getAll();
 
 		return ResponseEntity.ok(orders);
 	}
 	
-	@CrossOrigin
 	@GetMapping("/itens")
 	public ResponseEntity<List<OrderItem>> getItens() {
 		final List<OrderItem> itens = service.getAllItens();

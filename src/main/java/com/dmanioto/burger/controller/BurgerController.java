@@ -19,7 +19,6 @@ public class BurgerController {
 	@Autowired
 	private BurgerService service;
 	
-	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Burger>> getAll() {
 		

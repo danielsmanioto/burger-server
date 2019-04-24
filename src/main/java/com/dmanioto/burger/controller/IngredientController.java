@@ -19,7 +19,6 @@ public class IngredientController {
 	@Autowired
 	private IngredientService service;
 	
-	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Ingredient>> getAll() {
 		
