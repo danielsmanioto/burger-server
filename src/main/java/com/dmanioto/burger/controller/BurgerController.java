@@ -21,7 +21,7 @@ public class BurgerController {
 	
 	@GetMapping
 	public ResponseEntity<List<Burger>> getAll() {
-		
+
 		List<Burger> burgers = service.getAll();
 
 		return ResponseEntity.ok(burgers);

@@ -2,11 +2,9 @@ package com.dmanioto.burger.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Component
 @Configuration
 public class CORSConfiguration implements WebMvcConfigurer {
 

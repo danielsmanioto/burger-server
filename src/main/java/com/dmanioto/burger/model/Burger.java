@@ -1,5 +1,8 @@
 package com.dmanioto.burger.model;
 
+import com.dmanioto.burger.config.MessageResourceBundle;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -18,7 +21,7 @@ public class Burger {
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Ingredient> ingredients;
-	
+
 	public Burger() {
 		// Constructor default
 	}
@@ -102,9 +105,9 @@ public class Burger {
 	public String toString() {
 		return "Burger [id=" + id + ", description=" + description + ", ingredients=" + ingredients + "]";
 	}
-	
+
 	public enum BurgerEnum {
-		X_BACON(1L, "X-Bacon"), 
+		X_BACON(1L, "X-Bacon"),
 		X_BURGER(2L, "X-Burger"), 
 		X_EGG(3L, "X-Egg"), 
 		X_EGG_BACON(4L, "X-EggBacon");
@@ -124,7 +127,7 @@ public class Burger {
 		public String getDescription() {
 			return description;
 		}
-		
+
 	}
-	
-}
+
+			}
