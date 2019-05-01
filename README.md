@@ -7,6 +7,9 @@ https://github.com/danielsmanioto/burger-client
 <b>Aplicação server</b> 
 https://github.com/danielsmanioto/burger-server
 
+<b>Aplicação de testes (funcionais) </b> 
+https://github.com/danielsmanioto/burger-test
+
 #Swagger - Documentação da API
 http://localhost:80/swagger-ui.html
 
