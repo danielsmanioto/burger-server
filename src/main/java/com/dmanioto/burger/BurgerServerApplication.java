@@ -1,13 +1,10 @@
 package com.dmanioto.burger;
 
-import com.dmanioto.burger.service.impl.PreloaderDataServiceImpl;
+import com.dmanioto.burger.fixture.MainPreloaderFixture;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
 public class BurgerServerApplication {
@@ -17,7 +14,7 @@ public class BurgerServerApplication {
 	}
 
 	@Bean
-	public CommandLineRunner predefineValues(PreloaderDataServiceImpl preloader) {
+	public CommandLineRunner predefineValues(MainPreloaderFixture preloader) {
 		return (args) -> {
 			preloader.persistAll();
 		};

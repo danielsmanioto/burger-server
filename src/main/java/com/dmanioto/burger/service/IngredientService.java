@@ -1,12 +1,10 @@
 package com.dmanioto.burger.service;
 
-import java.util.List;
-
 import com.dmanioto.burger.model.Ingredient;
 
-public interface IngredientService {
+import java.util.List;
 
-	void createPreDefinedIngredients();
+public interface IngredientService {
 
 	Ingredient getLettuce();
 

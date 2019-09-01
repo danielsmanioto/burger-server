@@ -58,6 +58,9 @@ Para parar a aplicação -> stop.sh
 	acoplamento e ter um sistema com alta coesão e escalável.
 </p>
 <p>
+    <b>Padrão de projeto Builder:</b> Separar a logica de criação dos objetetos​
+</p>
+<p>
 	<b>Injeção de dependência e uso de interface:​</b> no service para garantir um contrato e
 	obrigatoriedade de implementação das regras fundamentais de cada funcionalidade.
 <p/>
@@ -74,7 +77,6 @@ Para parar a aplicação -> stop.sh
   <li>Ter um browser instalado na maquina
   <li>Ter Docker instalado na maquina
 </ul>
-
 
 <b>Acessando:</b>
 <ul>
