@@ -1,6 +1,9 @@
 # burger-server
 Burger Sale - Server Side
 
+Este repositório contém somente a aplicação server(back-end) 
+para ter a aplicação rodando completamente é necessário subir a aplicação cliente(front-end) em paralelo conforme instruções. 
+
 <b>Aplicação client</b>
 https://github.com/danielsmanioto/burger-client
 
@@ -17,23 +20,11 @@ http://localhost:80/swagger-ui.html
 https://dsmanioto-burger-server.herokuapp.com/
 
 # Instruções de como executar com Docker
-execute o arquivo build.sh (exemplo no linux-> ./build.sh)
-execute o arquivo run.sh
+execute o arquivo build.sh (exemplo no linux-> ./build.sh) <br>
+execute o arquivo run.sh <br>
 Verificar se API está no ar -> http://localhost:80
 
 Agora siga os passos na aplicação client
-
-Para parar a aplicação -> stop.sh
-# Instruções de como executar sem Docker
-<ul>
-  <li>mvn clean install (Fazer o build e gerar o artefato target/burger-server-0.0.1-SNAPSHOT.jar)</li>
-  <li>mvn spring-boot:run (para iniciar a aplicação)
-  <li>Baixar a aplicação client em https://github.com/danielsmanioto/burger-client</li>
-  <li>Para abrir a aplicação client basta abrir o index.html em um browser (exemplo: Chrome)</li>
-  <li>É possível validar os methodos HTTP usando o client postman basta importar o arquivo --> burger-server\useful\requests\postman</li>
-  <li>É possível validar os methodos HTTP gets executar os .sh em --> burger-server\useful\requests\curl</li>
-  <li>Acessar o banco de dados em memoria --> http://localhost:<porta>/h2</li>
-</ul>
 
 # Justificativa design da aplicação
 <p>
@@ -77,11 +68,4 @@ Para parar a aplicação -> stop.sh
   <li>Ter um browser instalado na maquina
   <li>Ter Docker instalado na maquina
 </ul>
-
-<b>Acessando:</b>
-<ul>
-  <li>Client: http://localhost:83/</li>
-  <li>Server: http://localhost:80/</li>
-</ul>
-
 
