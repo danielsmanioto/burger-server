@@ -1,11 +1,9 @@
 package com.dmanioto.burger.service;
 
-import java.math.BigDecimal;
-
-import com.dmanioto.burger.model.OrderSale;
+import com.dmanioto.burger.model.OrderDiscount;
 
 public interface OrderDiscountService {
 
-	void save(String description, BigDecimal discountValue, OrderSale orderSale);
+	void save(OrderDiscount orderDiscount);
 	
 }
