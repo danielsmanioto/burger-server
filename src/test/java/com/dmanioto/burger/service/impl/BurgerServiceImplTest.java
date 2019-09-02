@@ -23,25 +23,25 @@ public class BurgerServiceImplTest {
 	@Test
 	public void checkPriceBacon() {
 		Burger xbacon = burgerServiceImpl.getXBacon();
-		assertEquals(BigDecimal.valueOf(6.5), xbacon.getPriceTotal());
+		assertEquals(BigDecimal.valueOf(6.50).setScale(2), xbacon.getPriceTotal());
 	}
 	
 	@Test
 	public void checkPriceBurger() {
 		Burger xburger = burgerServiceImpl.getXBurger();
-		assertEquals(BigDecimal.valueOf(4.5), xburger.getPriceTotal());
+		assertEquals(BigDecimal.valueOf(4.50).setScale(2), xburger.getPriceTotal());
 	}
 
 	@Test
 	public void checkPricexEggBurger() {
 		Burger xeggbacon = burgerServiceImpl.getXEggBacon();
-		assertEquals(BigDecimal.valueOf(7.3), xeggbacon.getPriceTotal());
+		assertEquals(BigDecimal.valueOf(7.30).setScale(2), xeggbacon.getPriceTotal());
 	}
 	
 	@Test
 	public void checkPricexEgg() {
 		Burger xegg = burgerServiceImpl.getXEgg();
-		assertEquals(BigDecimal.valueOf(5.3), xegg.getPriceTotal());
+		assertEquals(BigDecimal.valueOf(5.30).setScale(2), xegg.getPriceTotal());
 	}
 	
 }
