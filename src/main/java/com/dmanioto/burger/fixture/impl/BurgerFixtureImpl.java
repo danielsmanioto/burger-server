@@ -1,5 +1,6 @@
-package com.dmanioto.burger.fixture;
+package com.dmanioto.burger.fixture.impl;
 
+import com.dmanioto.burger.fixture.Fixture;
 import com.dmanioto.burger.model.Burger;
 import com.dmanioto.burger.model.Ingredient;
 import com.dmanioto.burger.model.builder.BurgerBuilder;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 @Component
-public class BurgerFixture {
+public class BurgerFixtureImpl implements Fixture {
 
     private final Logger LOG = LoggerFactory.getLogger(BurgerServiceImpl.class);
 
@@ -24,7 +25,8 @@ public class BurgerFixture {
     @Autowired
     private BurgerRepository repository;
 
-    public void createPreDefinedBurgers() {
+    @Override
+    public void createPreDefinedData() {
         final Ingredient bacon = ingredientService.getBacon();
         final Ingredient meatBurger = ingredientService.getMeatBurger();
         final Ingredient cheese = ingredientService.getCheese();

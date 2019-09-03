@@ -1,5 +1,6 @@
-package com.dmanioto.burger.fixture;
+package com.dmanioto.burger.fixture.impl;
 
+import com.dmanioto.burger.fixture.Fixture;
 import com.dmanioto.burger.model.Ingredient;
 import com.dmanioto.burger.model.builder.IngredientBuilder;
 import com.dmanioto.burger.repository.IngredientRepository;
@@ -12,14 +13,15 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 
 @Component
-public class IngredientFixture {
+public class IngredientFixtureImpl implements Fixture {
 
     private final Logger LOG = LoggerFactory.getLogger(IngredientServiceImpl.class);
 
     @Autowired
     private IngredientRepository repository;
 
-    public void createPreDefinedIngredients() {
+    @Override
+    public void createPreDefinedData() {
         repository.save(new IngredientBuilder().setE(Ingredient.IngredientEnum.LETTUCE).setPrice(BigDecimal.valueOf(0.4)).createIngredient());
         repository.save(new IngredientBuilder().setE(Ingredient.IngredientEnum.BACON).setPrice(BigDecimal.valueOf(2)).createIngredient());
         repository.save(new IngredientBuilder().setE(Ingredient.IngredientEnum.MEAT_BURGER).setPrice(BigDecimal.valueOf(3)).createIngredient());

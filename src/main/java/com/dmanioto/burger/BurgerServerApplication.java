@@ -1,6 +1,7 @@
 package com.dmanioto.burger;
 
-import com.dmanioto.burger.fixture.MainPreloaderFixture;
+import com.dmanioto.burger.fixture.impl.BurgerFixtureImpl;
+import com.dmanioto.burger.fixture.impl.IngredientFixtureImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,9 +15,10 @@ public class BurgerServerApplication {
 	}
 
 	@Bean
-	public CommandLineRunner predefineValues(MainPreloaderFixture preloader) {
+	public CommandLineRunner predefineValues(IngredientFixtureImpl ingredient, BurgerFixtureImpl burger) {
 		return (args) -> {
-			preloader.persistAll();
+			ingredient.createPreDefinedData();
+			burger.createPreDefinedData();
 		};
 	}
 
