@@ -52,6 +52,9 @@ Agora siga os passos na aplicação client
     <b>Padrão de projeto Builder:</b> Separar a logica de criação dos objetetos​
 </p>
 <p>
+    <b>Padrão de projeto Strategy:</b> Para separar a regra de discontos 
+</p>
+<p>
 	<b>Injeção de dependência e uso de interface:​</b> no service para garantir um contrato e
 	obrigatoriedade de implementação das regras fundamentais de cada funcionalidade.
 <p/>
