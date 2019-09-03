@@ -28,14 +28,9 @@ public class PromotionDiscountImpl implements PromotionDiscount {
 	}
 	
 	private BigDecimal getTotalPriceDiscount(OrderSale os) {
-		long qttyLettuce = getCountForIngredient(os, IngredientEnum.LETTUCE);
-		long qttyBacon = getCountForIngredient(os, IngredientEnum.BACON);
-		long qttyCheese = getCountForIngredient(os, IngredientEnum.CHEESE);
-		long qttyMeatBurger = getCountForIngredient(os, IngredientEnum.MEAT_BURGER);
-
-		BigDecimal valueLigth = ligthDiscount(os.getTotalPriceItens(), qttyLettuce, qttyBacon);
-		BigDecimal valueMeet = aLotOfMeatDiscount(qttyMeatBurger);
-	  	BigDecimal valueCheese = aLotOfCheeseDiscount(qttyCheese);
+		BigDecimal valueLigth = ligthDiscount(os);
+		BigDecimal valueMeet = aLotOfMeatDiscount(os);
+	  	BigDecimal valueCheese = aLotOfCheeseDiscount(os);
 
 		return valueLigth.add(valueMeet).add(valueCheese);
 	}
@@ -47,17 +42,22 @@ public class PromotionDiscountImpl implements PromotionDiscount {
 				.count();
 	}
 
-	private BigDecimal ligthDiscount(BigDecimal totalPrice, long lettuce, long bacon) {
-		final boolean isLight = lettuce > 0 && bacon == 0;
-		return isLight ? totalPrice.multiply(BigDecimal.valueOf(0.10)) : BigDecimal.ZERO;
+	private BigDecimal ligthDiscount(OrderSale os) {
+		long qttyLettuce = getCountForIngredient(os, IngredientEnum.LETTUCE);
+		long qttyBacon = getCountForIngredient(os, IngredientEnum.BACON);
+
+		final boolean isLight = qttyLettuce > 0 && qttyBacon == 0;
+		return isLight ? os.getTotalPriceItens().multiply(BigDecimal.valueOf(0.10)) : BigDecimal.ZERO;
 	}
 
-	private BigDecimal aLotOfCheeseDiscount(long countCheese) {
-		return ingredientService.getCheese().getPrice().multiply(BigDecimal.valueOf(countCheese / 3));
+	private BigDecimal aLotOfCheeseDiscount(OrderSale os) {
+		long qttyCheese = getCountForIngredient(os, IngredientEnum.CHEESE);
+		return ingredientService.getCheese().getPrice().multiply(BigDecimal.valueOf(qttyCheese / 3));
 	}
 
-	private BigDecimal aLotOfMeatDiscount(long countMetBurger) {
-		return ingredientService.getMeatBurger().getPrice().multiply(BigDecimal.valueOf(countMetBurger / 3));
+	private BigDecimal aLotOfMeatDiscount(OrderSale os) {
+		long qttyMeatBurger = getCountForIngredient(os, IngredientEnum.MEAT_BURGER);
+		return ingredientService.getMeatBurger().getPrice().multiply(BigDecimal.valueOf(qttyMeatBurger / 3));
 	}
 
 }
