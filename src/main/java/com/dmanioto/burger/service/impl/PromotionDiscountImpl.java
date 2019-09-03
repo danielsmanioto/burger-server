@@ -2,6 +2,7 @@ package com.dmanioto.burger.service.impl;
 
 import java.math.BigDecimal;
 
+import com.dmanioto.burger.model.Ingredient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,38 +28,35 @@ public class PromotionDiscountImpl implements PromotionDiscount {
 	}
 	
 	private BigDecimal getTotalPriceDiscount(OrderSale os) {
-		int qttyLettuce = 0;
-		int qttyBacon = 0;
-		int qttyCheese = 0;
-		int qttyMeatBurger = 0;
-		for (OrderItem item : os.getItens()) {
-			if (IngredientEnum.LETTUCE.getId().equals(item.getIngredient().getId()))
-				qttyLettuce++;
-			else if (IngredientEnum.BACON.getId().equals(item.getIngredient().getId()))
-				qttyBacon++;
-			else if (IngredientEnum.MEAT_BURGER.getId().equals(item.getIngredient().getId())) 
-				qttyMeatBurger++;
-			else if (IngredientEnum.CHEESE.getId().equals(item.getIngredient().getId())) 
-				qttyCheese++;
-		}
-		
+		long qttyLettuce = getCountForIngredient(os, IngredientEnum.LETTUCE);
+		long qttyBacon = getCountForIngredient(os, IngredientEnum.BACON);
+		long qttyCheese = getCountForIngredient(os, IngredientEnum.CHEESE);
+		long qttyMeatBurger = getCountForIngredient(os, IngredientEnum.MEAT_BURGER);
+
 		BigDecimal valueLigth = ligthDiscount(os.getTotalPriceItens(), qttyLettuce, qttyBacon);
 		BigDecimal valueMeet = aLotOfMeatDiscount(qttyMeatBurger);
-	  	BigDecimal valueChees = aLotOfCheeseDiscount(qttyCheese);
+	  	BigDecimal valueCheese = aLotOfCheeseDiscount(qttyCheese);
 
-		return valueLigth.add(valueMeet).add(valueChees);
+		return valueLigth.add(valueMeet).add(valueCheese);
 	}
 
-	private BigDecimal ligthDiscount(BigDecimal totalPrice, int lettuce, int bacon) {
+	private long getCountForIngredient(OrderSale os, IngredientEnum lettuce) {
+		return os.getItens()
+				.stream()
+				.filter(item -> lettuce.getId().equals(item.getIngredient().getId()))
+				.count();
+	}
+
+	private BigDecimal ligthDiscount(BigDecimal totalPrice, long lettuce, long bacon) {
 		final boolean isLight = lettuce > 0 && bacon == 0;
 		return isLight ? totalPrice.multiply(BigDecimal.valueOf(0.10)) : BigDecimal.ZERO;
 	}
 
-	private BigDecimal aLotOfCheeseDiscount(int countCheese) {
+	private BigDecimal aLotOfCheeseDiscount(long countCheese) {
 		return ingredientService.getCheese().getPrice().multiply(BigDecimal.valueOf(countCheese / 3));
 	}
 
-	private BigDecimal aLotOfMeatDiscount(int countMetBurger) {
+	private BigDecimal aLotOfMeatDiscount(long countMetBurger) {
 		return ingredientService.getMeatBurger().getPrice().multiply(BigDecimal.valueOf(countMetBurger / 3));
 	}
 
