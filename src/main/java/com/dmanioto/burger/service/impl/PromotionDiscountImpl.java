@@ -19,25 +19,18 @@ public class PromotionDiscountImpl implements PromotionDiscount {
 	
 	@Override
 	public BigDecimal calculeTotalPrice(OrderSale orderSale) {
-		double totalPrice = orderSale.getTotalPriceItens().doubleValue();
-		
-		double totalDiscount = getTotalPriceDiscount(orderSale, totalPrice);
-		
-		totalPrice -= totalDiscount;
-		
-		return BigDecimal.valueOf(totalPrice);
+		BigDecimal totalPrice = orderSale.getTotalPriceItens();
+
+		BigDecimal totalDiscount = getTotalPriceDiscount(orderSale);
+
+		return totalPrice.subtract(totalDiscount);
 	}
 	
-	private double getTotalPriceDiscount(OrderSale os, double totalPrice) {
+	private BigDecimal getTotalPriceDiscount(OrderSale os) {
 		int qttyLettuce = 0;
 		int qttyBacon = 0;
 		int qttyCheese = 0;
 		int qttyMeatBurger = 0;
-		
-		os.getItens().forEach(item -> {
-			
-		});
-		
 		for (OrderItem item : os.getItens()) {
 			if (IngredientEnum.LETTUCE.getId().equals(item.getIngredient().getId()))
 				qttyLettuce++;
@@ -49,29 +42,24 @@ public class PromotionDiscountImpl implements PromotionDiscount {
 				qttyCheese++;
 		}
 		
-		double discount = 0;
-		
-		discount += ligthDiscount(totalPrice, discount, qttyLettuce, qttyBacon);
-	  	discount += aLotOfMeatDiscount(qttyMeatBurger);
-	  	discount += aLotOfCheeseDiscount(qttyCheese);
-	  	
-		return discount;
+		BigDecimal valueLigth = ligthDiscount(os.getTotalPriceItens(), qttyLettuce, qttyBacon);
+		BigDecimal valueMeet = aLotOfMeatDiscount(qttyMeatBurger);
+	  	BigDecimal valueChees = aLotOfCheeseDiscount(qttyCheese);
+
+		return valueLigth.add(valueMeet).add(valueChees);
 	}
 
-	private double ligthDiscount(double totalPrice, double discount, int lettuce, int bacon) {
+	private BigDecimal ligthDiscount(BigDecimal totalPrice, int lettuce, int bacon) {
 		final boolean isLight = lettuce > 0 && bacon == 0;
-		if (isLight) 
-			discount += totalPrice * 0.10;
-		
-		return discount;
+		return isLight ? totalPrice.multiply(BigDecimal.valueOf(0.10)) : BigDecimal.ZERO;
 	}
 
-	private double aLotOfCheeseDiscount(int countCheese) {
-		return ingredientService.getCheese().getPrice().doubleValue() * (countCheese / 3);
+	private BigDecimal aLotOfCheeseDiscount(int countCheese) {
+		return ingredientService.getCheese().getPrice().multiply(BigDecimal.valueOf(countCheese / 3));
 	}
 
-	private double aLotOfMeatDiscount(int countMetBurger) {
-		return ingredientService.getMeatBurger().getPrice().doubleValue() * (countMetBurger / 3);
+	private BigDecimal aLotOfMeatDiscount(int countMetBurger) {
+		return ingredientService.getMeatBurger().getPrice().multiply(BigDecimal.valueOf(countMetBurger / 3));
 	}
 
 }

@@ -102,8 +102,10 @@ public class OrderSale {
     }
 
     public BigDecimal getTotalPriceItens() {
-        final Double price = this.itens.stream().mapToDouble(e -> e.getPriceSale().doubleValue()).sum();
-        return BigDecimal.valueOf(price);
+        return this.itens
+                .stream()
+                .map(e -> e.getPriceSale())
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
 }
