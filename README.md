@@ -13,10 +13,10 @@ https://github.com/danielsmanioto/burger-server
 <b>Aplicação de testes (funcionais) </b> 
 https://github.com/danielsmanioto/burger-test
 
-#Swagger - Documentação da API
+<b>Swagger - Documentação da API</b>
 http://localhost:80/swagger-ui.html
 
-#Heroku
+<b>API rodando no Heroku</b>
 https://dsmanioto-burger-server.herokuapp.com/
 
 # Instruções de como executar com Docker
