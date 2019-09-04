@@ -40,6 +40,7 @@ public class OrderSaleServiceImpl implements OrderSaleService {
     @Autowired
     private IngredientService ingredientService;
 
+    @Override
     public OrderSale finishOrder(OrderSaleDto dto) {
         List<OrderItem> itens = saveItensOrderSale(dto);
 
@@ -55,14 +56,13 @@ public class OrderSaleServiceImpl implements OrderSaleService {
     private void updateTotalPrice(Long orderId) {
         OrderSale os = getById(orderId);
         final BigDecimal totalPrice = promotionService.calculeTotalPrice(os);
-
         os.setTotalPrice(totalPrice);
         repository.save(os);
     }
 
     private OrderSale saveOrderSale(List<OrderItem> itens) {
         return repository.save(new OrderSaleBuilder()
-                .setItens(itens)
+                .withItens(itens)
                 .createOrderSale());
     }
 
@@ -70,29 +70,42 @@ public class OrderSaleServiceImpl implements OrderSaleService {
         final Burger burger = burgerService.getById(dto.getBurger().getId());
 
         List<OrderItem> itens = new ArrayList<>();
-
-        burger.getIngredients().forEach(ingredient -> {
-            OrderItem item = new OrderItemBuilder().setIngredient(ingredient).setPrice(ingredient.getPrice()).createOrderItem();
-            orderItemService.save(item);
-
-            OrderItem orderItem = orderItemService.getOrderItem(item);
-            itens.add(orderItem);
-        });
-
-        if (dto.getAditionals() != null) {
-
-            dto.getAditionals().forEach(ingredient -> {
-                Ingredient ingredientAditional = ingredientService.getById(ingredient.getId());
-                OrderItem item = new OrderItemBuilder().setIngredient(ingredientAditional).setPrice(ingredientAditional.getPrice()).createOrderItem();
-                orderItemService.save(item);
-
-                OrderItem orderItem = orderItemService.getOrderItem(item);
-                itens.add(orderItem);
-            });
-
-        }
+        saveIngredients(burger, itens);
+        saveAditionals(dto, itens);
 
         return itens;
+    }
+
+    private void saveIngredients(Burger burger, List<OrderItem> itens) {
+        burger.getIngredients()
+                .stream()
+                .forEach(ingredient -> {
+                    OrderItem item = new OrderItemBuilder().
+                            withIngredient(ingredient).
+                            withPrice(ingredient.getPrice()).
+                            createOrderItem();
+                    orderItemService.save(item);
+                    itens.add(orderItemService.getOrderItem(item));
+                });
+    }
+
+    private void saveAditionals(OrderSaleDto dto, List<OrderItem> itens) {
+        if (dto.getAditionals() != null) {
+
+            dto.getAditionals()
+                    .stream()
+                    .forEach(ingredient -> {
+                        Ingredient ingredientAditional = ingredientService.getById(ingredient.getId());
+                        OrderItem item = new OrderItemBuilder().
+                                withIngredient(ingredientAditional)
+                                .withPrice(ingredientAditional.getPrice())
+                                .createOrderItem();
+                        orderItemService.save(item);
+
+                        OrderItem orderItem = orderItemService.getOrderItem(item);
+                        itens.add(orderItem);
+                    });
+        }
     }
 
     @Override

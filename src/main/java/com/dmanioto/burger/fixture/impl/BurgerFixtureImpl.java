@@ -32,16 +32,16 @@ public class BurgerFixtureImpl implements Fixture {
         final Ingredient cheese = ingredientService.getCheese();
         final Ingredient egg = ingredientService.getEgg();
 
-        Burger xBacon = new BurgerBuilder().setE(Burger.BurgerEnum.X_BACON).setIngredients(Arrays.asList(bacon, meatBurger, cheese)).createBurger();
+        Burger xBacon = new BurgerBuilder().withType(Burger.BurgerEnum.X_BACON).withIngredients(Arrays.asList(bacon, meatBurger, cheese)).createBurger();
         repository.save(xBacon);
 
-        Burger xBurger = new BurgerBuilder().setE(Burger.BurgerEnum.X_BURGER).setIngredients(Arrays.asList(meatBurger, cheese)).createBurger();
+        Burger xBurger = new BurgerBuilder().withType(Burger.BurgerEnum.X_BURGER).withIngredients(Arrays.asList(meatBurger, cheese)).createBurger();
         repository.save(xBurger);
 
-        Burger xEgg = new BurgerBuilder().setE(Burger.BurgerEnum.X_EGG).setIngredients(Arrays.asList(egg, meatBurger, cheese)).createBurger();
+        Burger xEgg = new BurgerBuilder().withType(Burger.BurgerEnum.X_EGG).withIngredients(Arrays.asList(egg, meatBurger, cheese)).createBurger();
         repository.save(xEgg);
 
-        Burger xEggBacon = new BurgerBuilder().setE(Burger.BurgerEnum.X_EGG_BACON).setIngredients(Arrays.asList(bacon, egg, meatBurger, cheese)).createBurger();
+        Burger xEggBacon = new BurgerBuilder().withType(Burger.BurgerEnum.X_EGG_BACON).withIngredients(Arrays.asList(bacon, egg, meatBurger, cheese)).createBurger();
         repository.save(xEggBacon);
 
         LOG.info("Burgers created as success");

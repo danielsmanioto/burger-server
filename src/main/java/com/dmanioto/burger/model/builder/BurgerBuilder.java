@@ -9,12 +9,12 @@ public class BurgerBuilder {
     private Burger.BurgerEnum e;
     private List<Ingredient> ingredients;
 
-    public BurgerBuilder setE(Burger.BurgerEnum e) {
+    public BurgerBuilder withType(Burger.BurgerEnum e) {
         this.e = e;
         return this;
     }
 
-    public BurgerBuilder setIngredients(List<Ingredient> ingredients) {
+    public BurgerBuilder withIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
         return this;
     }

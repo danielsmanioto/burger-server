@@ -8,7 +8,7 @@ import java.util.List;
 public class OrderSaleBuilder {
     private List<OrderItem> itens;
 
-    public OrderSaleBuilder setItens(List<OrderItem> itens) {
+    public OrderSaleBuilder withItens(List<OrderItem> itens) {
         this.itens = itens;
         return this;
     }

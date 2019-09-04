@@ -8,12 +8,12 @@ public class IngredientBuilder {
     private Ingredient.IngredientEnum e;
     private BigDecimal price;
 
-    public IngredientBuilder setE(Ingredient.IngredientEnum e) {
+    public IngredientBuilder withType(Ingredient.IngredientEnum e) {
         this.e = e;
         return this;
     }
 
-    public IngredientBuilder setPrice(BigDecimal price) {
+    public IngredientBuilder withPrice(BigDecimal price) {
         this.price = price;
         return this;
     }

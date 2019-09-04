@@ -4,7 +4,6 @@ import com.dmanioto.burger.model.Burger;
 import com.dmanioto.burger.model.Burger.BurgerEnum;
 import com.dmanioto.burger.repository.BurgerRepository;
 import com.dmanioto.burger.service.BurgerService;
-import com.dmanioto.burger.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

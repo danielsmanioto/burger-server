@@ -10,17 +10,17 @@ public class OrderDiscountBuilder {
     private BigDecimal value;
     private OrderSale orderSale;
 
-    public OrderDiscountBuilder setDescription(String description) {
+    public OrderDiscountBuilder withDescription(String description) {
         this.description = description;
         return this;
     }
 
-    public OrderDiscountBuilder setValue(BigDecimal value) {
+    public OrderDiscountBuilder withValue(BigDecimal value) {
         this.value = value;
         return this;
     }
 
-    public OrderDiscountBuilder setOrderSale(OrderSale orderSale) {
+    public OrderDiscountBuilder withOrderSale(OrderSale orderSale) {
         this.orderSale = orderSale;
         return this;
     }

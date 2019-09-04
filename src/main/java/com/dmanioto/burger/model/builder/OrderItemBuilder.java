@@ -9,12 +9,12 @@ public class OrderItemBuilder {
     private Ingredient ingredient;
     private BigDecimal price;
 
-    public OrderItemBuilder setIngredient(Ingredient ingredient) {
+    public OrderItemBuilder withIngredient(Ingredient ingredient) {
         this.ingredient = ingredient;
         return this;
     }
 
-    public OrderItemBuilder setPrice(BigDecimal price) {
+    public OrderItemBuilder withPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
