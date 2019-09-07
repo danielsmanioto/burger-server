@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BurgerServiceImpl implements BurgerService {
@@ -42,6 +43,7 @@ public class BurgerServiceImpl implements BurgerService {
 
 	@Override
 	public Burger getById(Long id) {
-		return repository.findById(id).get();
+		Optional<Burger> burger = repository.findById(id);
+		return burger.isPresent() ? burger.get() : null;
 	}
 }
