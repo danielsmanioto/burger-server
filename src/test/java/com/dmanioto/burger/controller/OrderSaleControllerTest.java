@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -30,8 +31,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-@Import({ EmbeddedMongoAutoConfiguration.class })
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureMockMvc
 public class OrderSaleControllerTest {
 
 	private static final String URL_POST_FINISH_SALE_ORDER = "/orders";
@@ -62,7 +63,7 @@ public class OrderSaleControllerTest {
 		final List<Ingredient> aditionals = new ArrayList<>();
 		final OrderSaleDto orderDto = new OrderSaleDto(xBurger, aditionals);
 		final String json = gson.toJson(orderDto);
-		
+
 		mvc.perform(post(URL_POST_FINISH_SALE_ORDER).contentType(CONTENT_TYPE).content(json))
 				.andExpect(status().isCreated())
 				.andExpect(jsonPath("$.totalPrice", equalTo(4.5)));

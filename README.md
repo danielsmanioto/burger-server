@@ -36,10 +36,10 @@ Agora siga os passos na aplicação client
 </p>
 <p>
 	<b>MVC:</b>​ Organização em camadas para desacoplar as regras corretamente
-	<p>Controller ou Resource: Chamada da regra de negócio e disponibilização em Json para
+	<p><b>Controller ou Resource:</b> Chamada da regra de negócio e disponibilização em Json para
 	o externo;</p>
-	<p>Service: Regra de negócio;</p>
-	<p>Repository ou DAO: Regra e persistência com banco de dados ou qualquer que seja o
+	<p><b>Service:</b> Regra de negócio;</p>
+	<p><b>Repository ou DAO:</b> Regra e persistência com banco de dados ou qualquer que seja o
 	tipo de persistência;</p>
 	<p>Model: Java bean.</p>
 </p>
@@ -63,6 +63,23 @@ Agora siga os passos na aplicação client
 	Organização do projeto: ​Organização dos pacotes do projeto com objetivo de facilitar o
 	entendimento e auxiliar na evolução do sistema.
 </p>
+# Testes
+<p> 
+    <b>Teste Unitário:</b> Garantir cobertura de regra de negocio</b> 
+</p>
+<p> 
+    <b>Teste de Integração:</b> Garantir que nossa API esteje sempre funcionando e integrando corretamente com outros sistemas.</b> 
+</p>
+<p> 
+    <b>Teste Funcional:</b> Criado uma aplicação externa(conforme documentação) para realizar os testes funcionais de ponta a ponta.</b> 
+</p>
+
+<b>Tecnologias do back-end:</b>
+<ul>
+  <li>JDK 1.8+</li>
+  <li>Maven</li>
+  <li>Sprint-Boot
+</ul>
 
 <b>Requisitos:</b>
 <ul>
