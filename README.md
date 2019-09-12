@@ -63,7 +63,9 @@ Agora siga os passos na aplicação client
 	Organização do projeto: ​Organização dos pacotes do projeto com objetivo de facilitar o
 	entendimento e auxiliar na evolução do sistema.
 </p>
+
 # Testes
+
 <p> 
     <b>Teste Unitário:</b> Garantir cobertura de regra de negocio</b> 
 </p>
@@ -78,7 +80,7 @@ Agora siga os passos na aplicação client
 <ul>
   <li>JDK 1.8+</li>
   <li>Maven</li>
-  <li>Sprint-Boot
+  <li>Spring-Boot
 </ul>
 
 <b>Requisitos:</b>
