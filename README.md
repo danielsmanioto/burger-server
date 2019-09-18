@@ -26,6 +26,20 @@ Verificar se API está no ar -> http://localhost:80
 
 Agora siga os passos na aplicação client
 
+# Instruções de como executar sem Docker
+
+<p>Subir aplicação</p>
+
+`mvn clean install && mvn spring-boot:run`
+
+<p>Executar os testes e verificar cobertura de testes</p>
+
+`mvn clean test`
+
+<p>Verificar cobertura de testes:</p>
+
+./target/site/jacoco/index.html
+
 # Justificativa design da aplicação
 <p>
 	<b>Clean code:</b>​ métodos intuitivos e sem comentários desnecessários;
