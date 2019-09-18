@@ -103,5 +103,6 @@ Agora siga os passos na aplicação client
   <li>Maven</li>
   <li>Ter um browser instalado na maquina
   <li>Ter Docker instalado na maquina
+  <li>É necessário instalar o plugin do lombok em sua IDE de preferência.
 </ul>
 
