@@ -8,10 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @NoArgsConstructor
 public class Ingredient {
 	

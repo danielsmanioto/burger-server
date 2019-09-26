@@ -7,10 +7,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @NoArgsConstructor
 public class OrderDiscount {
 

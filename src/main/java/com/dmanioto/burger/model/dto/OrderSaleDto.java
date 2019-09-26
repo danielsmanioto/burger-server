@@ -2,16 +2,11 @@ package com.dmanioto.burger.model.dto;
 
 import com.dmanioto.burger.model.Burger;
 import com.dmanioto.burger.model.Ingredient;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 public class OrderSaleDto {
 

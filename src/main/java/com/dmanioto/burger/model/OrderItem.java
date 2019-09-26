@@ -12,10 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 @Entity
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @NoArgsConstructor
 public class OrderItem {
 
