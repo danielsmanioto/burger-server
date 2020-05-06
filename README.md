@@ -17,7 +17,7 @@ https://github.com/danielsmanioto/burger-test
 http://localhost:80/swagger-ui.html
 
 <b>API rodando no Heroku</b>
-https://dsmanioto-burger-server.herokuapp.com/swagger-ui.html
+https://ds-burger-server.herokuapp.com/swagger-ui.html
 
 # Instruções de como executar com Docker
 execute o arquivo build.sh (exemplo no linux-> ./build.sh) <br>
