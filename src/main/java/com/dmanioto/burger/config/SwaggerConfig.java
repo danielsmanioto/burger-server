@@ -28,8 +28,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "burger-server-api",
-                "API burger-server.",
+                "burger-server-API",
+                "API burger-server",
                 "API V.1",
                 "Terms of service",
                 new Contact("Daniel Augusto Smanioto", "www.danielsmanioto.com", "daniel.smanioto@gmail.com"),
