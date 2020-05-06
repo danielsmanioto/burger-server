@@ -41,7 +41,7 @@ public class IngredientServiceImpl implements IngredientService {
 	}
 
 	@Override
-	public List<Ingredient> getAll() {
+	public List<Ingredient> findAll() {
 		return repository.findAll();
 	}
 

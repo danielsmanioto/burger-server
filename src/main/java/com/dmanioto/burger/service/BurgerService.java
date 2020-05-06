@@ -14,7 +14,7 @@ public interface BurgerService {
 
 	Burger getXEggBacon();
 
-	List<Burger> getAll();
+	List<Burger> findAll();
 
 	Burger getById(Long id);
 

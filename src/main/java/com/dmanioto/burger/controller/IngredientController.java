@@ -1,6 +1,7 @@
 package com.dmanioto.burger.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,16 +19,19 @@ public class IngredientController {
 	
 	@GetMapping
 	public ResponseEntity<List<Ingredient>> findAll() {
-		
-		List<Ingredient> ingredients = service.getAll();
+		List<Ingredient> ingredients = service.findAll();
 		return ResponseEntity.ok(ingredients);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Ingredient> findById(@PathVariable("id") Long id) {
-
-		final Ingredient ingredient = service.getById(id);
-		return ResponseEntity.ok(ingredient);
+		Optional<Ingredient> ingredient = Optional.ofNullable(service.getById(id));
+		
+		if (!ingredient.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(ingredient.get());
 	}
 	
 }

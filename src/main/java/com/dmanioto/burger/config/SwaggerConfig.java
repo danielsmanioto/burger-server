@@ -28,7 +28,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "burger-server",
+                "burger-server-api",
                 "API burger-server.",
                 "API V.1",
                 "Terms of service",

@@ -37,7 +37,7 @@ public class BurgerServiceImpl implements BurgerService {
 	}
 
 	@Override
-	public List<Burger> getAll() {
+	public List<Burger> findAll() {
 		return repository.findAll();
 	}
 

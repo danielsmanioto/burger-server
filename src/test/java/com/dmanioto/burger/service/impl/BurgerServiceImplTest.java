@@ -48,7 +48,7 @@ public class BurgerServiceImplTest {
 
     @Test
     public void findAll() {
-        List<Burger> burgers = burgerServiceImpl.getAll();
+        List<Burger> burgers = burgerServiceImpl.findAll();
         assertNotNull(burgers);
     }
 

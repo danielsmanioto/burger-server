@@ -2,7 +2,6 @@ package com.dmanioto.burger.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.dmanioto.burger.model.Burger;
 import com.dmanioto.burger.service.BurgerService;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("/burgers")
@@ -22,9 +18,8 @@ public class BurgerController {
     private BurgerService service;
 
     @GetMapping
-    public ResponseEntity<List<Burger>> getAll() {
-
-        List<Burger> burgers = service.getAll();
+    public ResponseEntity<List<Burger>> findAll() {
+        List<Burger> burgers = service.findAll();
 
         return ResponseEntity.ok(burgers);
     }
@@ -33,12 +28,11 @@ public class BurgerController {
     public ResponseEntity<Burger> findById(@PathVariable("id") Long id ) {
 		Optional<Burger> burger = Optional.ofNullable(service.getById(id));
 
-		if (burger.isPresent()) {
-			return ResponseEntity.ok(burger.get());
-		} else {
-			return  ResponseEntity.notFound().build();
+		if (!burger.isPresent()) {
+			return ResponseEntity.notFound().build();
 		}
-
+		
+		return ResponseEntity.ok(burger.get());
 	}
 
 }

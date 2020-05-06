@@ -17,7 +17,7 @@ https://github.com/danielsmanioto/burger-test
 http://localhost:80/swagger-ui.html
 
 <b>API rodando no Heroku</b>
-https://dsmanioto-burger-server.herokuapp.com/
+https://dsmanioto-burger-server.herokuapp.com/swagger-ui.html
 
 # Instruções de como executar com Docker
 execute o arquivo build.sh (exemplo no linux-> ./build.sh) <br>
@@ -78,6 +78,7 @@ Agora siga os passos na aplicação client
 	entendimento e auxiliar na evolução do sistema.
 </p>
 
+
 # Testes
 
 <p> 
@@ -105,4 +106,14 @@ Agora siga os passos na aplicação client
   <li>Ter Docker instalado na maquina
   <li>É necessário instalar o plugin do lombok em sua IDE de preferência.
 </ul>
+
+# CI
+
+<p> 
+    <b>TravisCI:</b></b> 
+</p>
+
+#Ussando no Heroku
+`heroku login`
+`heroku auth:token`
 
