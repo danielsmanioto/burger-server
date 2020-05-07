@@ -9,3 +9,5 @@ deploy:
   api_key:
     - secure: $HEROKU_API_KEY
   app: ds-burger-server
+  on:
+    repo: danielsmanioto/burger-server

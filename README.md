@@ -118,3 +118,4 @@ Agora siga os passos na aplicação client
 
 `heroku auth:token`
 
+`cat ~/.netrc`
