@@ -7,7 +7,7 @@ before_install:
 deploy:
   provider: heroku
   api_key:
-    - secure: $HEROKU_API_KEY
+    secure: 98c672f2-99cb-4d75-a7bc-a73fd5872c99
   app: ds-burger-server
   on:
-    repo: danielsmanioto/burger-server
+    branch: master

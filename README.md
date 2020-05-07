@@ -118,4 +118,6 @@ Agora siga os passos na aplicação client
 
 `heroku auth:token`
 
+`travis encrypt $(heroku auth:token) --add deploy.api_key`
+
 `cat ~/.netrc`
