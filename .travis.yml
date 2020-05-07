@@ -1,7 +1,8 @@
 language: java
 jdk:
-  - oraclejdk8
+  - openjdk8
+
 script: ./mvnw clean install
+
 notifications:
   email: daniel.smanioto@gmail.com
-    
