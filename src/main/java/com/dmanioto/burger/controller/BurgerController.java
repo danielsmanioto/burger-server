@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +19,9 @@ public class BurgerController {
     private BurgerService service;
 
     @GetMapping
-    public ResponseEntity<List<Burger>> findAll() {
-        List<Burger> burgers = service.findAll();
-
-        return ResponseEntity.ok(burgers);
+    @ResponseStatus(HttpStatus.OK)
+    public List<Burger> findAll() {
+        return service.findAll();
     }
 
 	@GetMapping("/{id}")

@@ -2,14 +2,15 @@ package com.dmanioto.burger.model.builder;
 
 import com.dmanioto.burger.model.Burger;
 import com.dmanioto.burger.model.Ingredient;
+import com.dmanioto.burger.model.enuns.BurgerType;
 
 import java.util.List;
 
 public class BurgerBuilder {
-    private Burger.BurgerEnum e;
+    private BurgerType e;
     private List<Ingredient> ingredients;
 
-    public BurgerBuilder withType(Burger.BurgerEnum e) {
+    public BurgerBuilder withType(BurgerType e) {
         this.e = e;
         return this;
     }

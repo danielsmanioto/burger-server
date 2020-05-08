@@ -1,14 +1,15 @@
 package com.dmanioto.burger.model.builder;
 
 import com.dmanioto.burger.model.Ingredient;
+import com.dmanioto.burger.model.enuns.IngredientType;
 
 import java.math.BigDecimal;
 
 public class IngredientBuilder {
-    private Ingredient.IngredientEnum e;
+    private IngredientType e;
     private BigDecimal price;
 
-    public IngredientBuilder withType(Ingredient.IngredientEnum e) {
+    public IngredientBuilder withType(IngredientType e) {
         this.e = e;
         return this;
     }

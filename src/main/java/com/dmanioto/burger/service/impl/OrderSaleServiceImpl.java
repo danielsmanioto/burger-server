@@ -7,6 +7,7 @@ import java.util.List;
 import com.dmanioto.burger.model.*;
 import com.dmanioto.burger.model.builder.OrderItemBuilder;
 import com.dmanioto.burger.model.builder.OrderSaleBuilder;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,8 @@ import com.dmanioto.burger.service.OrderSaleService;
 import com.dmanioto.burger.service.PromotionDiscount;
 
 @Service
+@Slf4j
 public class OrderSaleServiceImpl implements OrderSaleService {
-
-    private final Logger LOG = LoggerFactory.getLogger(OrderSaleServiceImpl.class);
 
     @Autowired
     private OrderSaleRepository repository;
@@ -48,13 +48,13 @@ public class OrderSaleServiceImpl implements OrderSaleService {
 
         updateTotalPrice(os.getId());
 
-        LOG.info("Order save as success.");
+        log.info("Order save as success.");
 
         return repository.findById(os.getId()).get();
     }
 
     private void updateTotalPrice(Long orderId) {
-        OrderSale os = getById(orderId);
+        OrderSale os = findById(orderId);
         final BigDecimal totalPrice = promotionService.calculeTotalPrice(os);
         os.setTotalPrice(totalPrice);
         repository.save(os);
@@ -109,17 +109,17 @@ public class OrderSaleServiceImpl implements OrderSaleService {
     }
 
     @Override
-    public List<OrderSale> getAll() {
+    public List<OrderSale> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public List<OrderItem> getAllItens() {
+    public List<OrderItem> findAllItens() {
         return orderItemService.getAll();
     }
 
     @Override
-    public OrderSale getById(Long id) {
+    public OrderSale findById(Long id) {
         return repository.findById(id).get();
     }
 

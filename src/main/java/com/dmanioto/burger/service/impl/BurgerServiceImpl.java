@@ -1,7 +1,7 @@
 package com.dmanioto.burger.service.impl;
 
 import com.dmanioto.burger.model.Burger;
-import com.dmanioto.burger.model.Burger.BurgerEnum;
+import com.dmanioto.burger.model.enuns.BurgerType;
 import com.dmanioto.burger.repository.BurgerRepository;
 import com.dmanioto.burger.service.BurgerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,22 +18,22 @@ public class BurgerServiceImpl implements BurgerService {
 
 	@Override
 	public Burger getXBacon() {
-		return repository.findById(BurgerEnum.X_BACON.getId()).get();
+		return repository.findById(BurgerType.X_BACON.getId()).get();
 	}
 
 	@Override
 	public Burger getXBurger() {
-		return repository.findById(BurgerEnum.X_BURGER.getId()).get();
+		return repository.findById(BurgerType.X_BURGER.getId()).get();
 	}
 
 	@Override
 	public Burger getXEgg() {
-		return repository.findById(BurgerEnum.X_EGG.getId()).get();
+		return repository.findById(BurgerType.X_EGG.getId()).get();
 	}
 
 	@Override
 	public Burger getXEggBacon() {
-		return repository.findById(BurgerEnum.X_EGG_BACON.getId()).get();
+		return repository.findById(BurgerType.X_EGG_BACON.getId()).get();
 	}
 
 	@Override
