@@ -30,7 +30,7 @@ public class SwaggerConfig {
         return new ApiInfo(
                 "burger-server",
                 "API burger-server",
-                "API V.1",
+                "API V.1-001",
                 "Terms of service",
                 new Contact("Daniel Augusto Smanioto", "www.danielsmanioto.com", "daniel.smanioto@gmail.com"),
                 "License of API", "API license URL", Collections.emptyList());
