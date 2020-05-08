@@ -1,5 +1,6 @@
 package com.dmanioto.burger.model;
 
+import com.dmanioto.burger.model.enuns.IngredientType;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -19,34 +20,10 @@ public class Ingredient {
 	
 	private BigDecimal price;
 
-	public Ingredient(IngredientEnum e, BigDecimal price) {
-		this.id = e.id;
-		this.description = e.description;
+	public Ingredient(IngredientType e, BigDecimal price) {
+		this.id = e.getId();
+		this.description = e.getDescription();
 		this.price = price;
-	}
-
-	public enum IngredientEnum {
-		LETTUCE(1L, "Alface"), 
-		BACON(2L, "Bacon"), 
-		MEAT_BURGER(3L, "Hamburguer de Carne"), 
-		EGG(4L, "Ovo"), 
-		CHEESE(5L, "Queijo");
-		
-		private final Long id;
-		private final String description;
-
-		IngredientEnum(Long id, String description) {
-			this.id = id;
-			this.description = description;
-		}
-
-		public Long getId() {
-			return id;
-		}
-
-		public String getDescription() {
-			return description;
-		}
 	}
 	
 }

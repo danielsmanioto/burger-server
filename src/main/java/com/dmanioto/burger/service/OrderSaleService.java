@@ -10,10 +10,10 @@ public interface OrderSaleService {
 
 	OrderSale finishOrder(OrderSaleDto dto);
 
-	List<OrderSale> getAll();
+	List<OrderSale> findAll();
 
-	List<OrderItem> getAllItens();
+	List<OrderItem> findAllItens();
 
-	OrderSale getById(Long id);
+	OrderSale findById(Long id);
 	
 }

@@ -1,5 +1,6 @@
 package com.dmanioto.burger.model;
 
+import com.dmanioto.burger.model.enuns.BurgerType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,9 +24,9 @@ public class Burger {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Ingredient> ingredients;
 
-    public Burger(BurgerEnum e, List<Ingredient> ingredients) {
-        this.id = e.id;
-        this.description = e.description;
+    public Burger(BurgerType e, List<Ingredient> ingredients) {
+        this.id = e.getId();
+        this.description = e.getDescription();
         this.ingredients = ingredients;
     }
 
@@ -34,29 +35,6 @@ public class Burger {
                 .stream()
                 .map(p -> p.getPrice())
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
-
-    public enum BurgerEnum {
-        X_BACON(1L, "X-Bacon"),
-        X_BURGER(2L, "X-Burger"),
-        X_EGG(3L, "X-Egg"),
-        X_EGG_BACON(4L, "X-EggBacon");
-
-        private final Long id;
-        private final String description;
-
-        BurgerEnum(Long id, String description) {
-            this.id = id;
-            this.description = description;
-        }
-
-        public Long getId() {
-            return id;
-        }
-
-        public String getDescription() {
-            return description;
-        }
     }
 
 }
