@@ -113,7 +113,8 @@ Agora siga os passos na aplicação client
     <b>TravisCI:</b></b> 
 </p>
 
-#Ussando no Heroku
+#Usando no Heroku
+
 `heroku login`
 
 `heroku auth:token`
