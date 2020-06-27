@@ -23,7 +23,7 @@ https://ds-burger-server.herokuapp.com/swagger-ui.html
 
 <img src="overview.png">
 
-# Arquitetura e Design
+# Server/API - Arquitetura e Design
 
 <img src="arq.png">
 
