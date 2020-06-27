@@ -19,6 +19,14 @@ http://localhost:80/swagger-ui.html
 <b>API rodando no Heroku</b>
 https://ds-burger-server.herokuapp.com/swagger-ui.html
 
+# Overview Projeto
+
+<img src="overview.png">
+
+# Arquitetura e Design
+
+<img src="arq.png">
+
 # Instruções de como executar com Docker
 execute o arquivo build.sh (exemplo no linux-> ./build.sh) <br>
 execute o arquivo run.sh <br>
