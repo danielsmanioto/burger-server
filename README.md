@@ -117,6 +117,8 @@ Agora siga os passos na aplicação client
 
 # CI
 
+<img src="ci.png"/>
+
 <p> 
     <b>TravisCI:</b></b> 
 </p>
