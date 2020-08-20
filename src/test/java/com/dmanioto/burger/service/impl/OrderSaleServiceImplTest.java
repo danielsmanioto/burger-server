@@ -44,7 +44,7 @@ public class OrderSaleServiceImplTest {
 		assertNotNull(os.getItens());
 		
 		assertEquals(3, os.getItens().size());
-		assertTrue(os.getTotalPrice().compareTo(BigDecimal.valueOf(6.5))==0);
+		assertEquals(new BigDecimal("6.50"), os.getTotalPrice());
 	}
 	
 	@Test
@@ -60,7 +60,7 @@ public class OrderSaleServiceImplTest {
 		assertNotNull(os.getItens());
 
 		assertEquals(2, os.getItens().size());
-		assertTrue(os.getTotalPrice().compareTo(BigDecimal.valueOf(4.5))==0);
+		assertEquals(new BigDecimal("4.50"), os.getTotalPrice());
 	}
 	
 	@Test
@@ -76,7 +76,7 @@ public class OrderSaleServiceImplTest {
 		assertNotNull(os.getItens());
 
 		assertEquals(3, os.getItens().size());
-		assertTrue(os.getTotalPrice().compareTo(BigDecimal.valueOf(5.3))==0);
+		assertEquals(new BigDecimal("5.30"), os.getTotalPrice());
 	}
 	
 	@Test
@@ -92,7 +92,7 @@ public class OrderSaleServiceImplTest {
 		assertNotNull(os.getItens());
 
 		assertEquals(4, os.getItens().size());
-		assertTrue(os.getTotalPrice().compareTo(BigDecimal.valueOf(7.3))==0);
+		assertEquals(new BigDecimal("7.30"), os.getTotalPrice());
 	}
 	
 }

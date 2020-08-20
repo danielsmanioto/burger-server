@@ -1,5 +1,6 @@
 package com.dmanioto.burger.service.impl;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
@@ -23,31 +24,31 @@ public class IngredientServiceImplTest {
 	@Test
 	public void checkPriceOfLettuce() {
 		final Ingredient lettuce = service.getLettuce();
-		assertTrue(lettuce.getPrice().compareTo(BigDecimal.valueOf(0.4)) == 0);
+		assertEquals(new BigDecimal("0.40"), lettuce.getPrice());
 	}
 	
 	@Test
 	public void checkPriceOfBacon() {
 		final Ingredient bacon = service.getBacon();
-		assertTrue(bacon.getPrice().compareTo(BigDecimal.valueOf(2.0)) == 0);		
+		assertEquals(new BigDecimal("2.00"), bacon.getPrice());
 	}
 	
 	@Test
 	public void checkPriceOfMeatBacon() {
 		final Ingredient meatBurger = service.getMeatBurger();
-		assertTrue(meatBurger.getPrice().compareTo(BigDecimal.valueOf(3.0)) == 0);		
+		assertEquals(new BigDecimal("3.00"), meatBurger.getPrice());
 	}
 
 	@Test
 	public void checkPriceOfegg() {
 		final Ingredient egg = service.getEgg();
-		assertTrue(egg.getPrice().compareTo(BigDecimal.valueOf(0.8)) == 0);		
+		assertEquals(new BigDecimal("0.80"), egg.getPrice());
 	}
 	
 	@Test
 	public void checkPriceOfCheese() {
 		final Ingredient cheese = service.getCheese();
-		assertTrue(cheese.getPrice().compareTo(BigDecimal.valueOf(1.5)) == 0);		
+		assertEquals(new BigDecimal("1.50"), cheese.getPrice());
 	}
 
 }
