@@ -18,22 +18,22 @@ public class BurgerServiceImpl implements BurgerService {
 
 	@Override
 	public Optional<Burger> getXBacon() {
-		return repository.findById(BurgerType.X_BACON.getId());
+		return repository.findById(1L);
 	}
 
 	@Override
 	public Optional<Burger> getXBurger() {
-		return repository.findById(BurgerType.X_BURGER.getId());
+		return repository.findById(2L);
 	}
 
 	@Override
 	public Optional<Burger> getXEgg() {
-		return repository.findById(BurgerType.X_EGG.getId());
+		return repository.findById(3L);
 	}
 
 	@Override
 	public Optional<Burger> getXEggBacon() {
-		return repository.findById(BurgerType.X_EGG_BACON.getId());
+		return repository.findById(4L);
 	}
 
 	@Override

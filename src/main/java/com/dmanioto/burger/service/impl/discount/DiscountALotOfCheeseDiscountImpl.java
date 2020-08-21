@@ -20,10 +20,11 @@ public class DiscountALotOfCheeseDiscountImpl implements Discount  {
         return ingredientService.getCheese().getPrice().multiply(BigDecimal.valueOf(qttyCheese / 3));
     }
 
-    private long getCountForIngredient(OrderSale os,IngredientType lettuce) {
+    private long getCountForIngredient(OrderSale os,IngredientType ingredientType) {
+        Long cheeseId = 5L;
         return os.getItens()
                 .stream()
-                .filter(item -> lettuce.getId().equals(item.getIngredient().getId()))
+                .filter(item -> cheeseId.equals(item.getIngredient().getId()))
                 .count();
     }
 

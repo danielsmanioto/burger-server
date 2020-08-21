@@ -126,9 +126,10 @@ Agora siga os passos na aplicação client
 # Ambientes
 
 <ul>
-  <li>application.properties : produção</li>
-  <li>applications-local.properties : local</li> 
-<ul>
+  <li>application.properties : produção (Docker e banco de dados)</li>
+  <li>applications-dev.properties : dev (Docker e banco de dados)</li> 
+  <li>applications-local.properties : local (Local com Banco de dados H2)</li> 
+</ul>
 
 #Usando no Heroku
 

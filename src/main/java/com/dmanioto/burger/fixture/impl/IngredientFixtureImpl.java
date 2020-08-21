@@ -2,7 +2,6 @@ package com.dmanioto.burger.fixture.impl;
 
 import com.dmanioto.burger.fixture.Fixture;
 import com.dmanioto.burger.model.Ingredient;
-import com.dmanioto.burger.model.enuns.IngredientType;
 import com.dmanioto.burger.repository.IngredientRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,36 +23,36 @@ public class IngredientFixtureImpl implements Fixture {
     @Override
     public void createPreDefinedData() {
        Ingredient lettuce = Ingredient.builder()
-                .id(IngredientType.LETTUCE.getId())
-                .description(IngredientType.LETTUCE.getDescription())
+                .id(1L)
+                .description("Alface")
                 .price(new BigDecimal("0.40"))
                 .build();
         repository.save(lettuce);
 
         Ingredient bacon = Ingredient.builder()
-                .id(IngredientType.BACON.getId())
-                .description(IngredientType.BACON.getDescription())
+                .id(2L)
+                .description("Bacon")
                 .price(new BigDecimal("2.0"))
                 .build();
         repository.save(bacon);
 
         Ingredient meatBurger = Ingredient.builder()
-                .id(IngredientType.MEAT_BURGER.getId())
-                .description(IngredientType.MEAT_BURGER.getDescription())
+                .id(3L)
+                .description("Hamburguer de Carne")
                 .price(new BigDecimal("3.0"))
                 .build();
         repository.save(meatBurger);
 
         Ingredient egg = Ingredient.builder()
-                .id(IngredientType.EGG.getId())
-                .description(IngredientType.EGG.getDescription())
+                .id(4L)
+                .description("Ovo")
                 .price(new BigDecimal("0.8"))
                 .build();
         repository.save(egg);
 
         Ingredient cheese = Ingredient.builder()
-                .id(IngredientType.CHEESE.getId())
-                .description(IngredientType.CHEESE.getDescription())
+                .id(5L)
+                .description("Queijo")
                 .price(new BigDecimal("1.50"))
                 .build();
         repository.save(cheese);

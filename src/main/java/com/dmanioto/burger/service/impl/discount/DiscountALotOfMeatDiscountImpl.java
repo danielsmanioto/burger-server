@@ -21,9 +21,10 @@ public class DiscountALotOfMeatDiscountImpl implements Discount {
     }
 
     private long getCountForIngredient(OrderSale os, IngredientType lettuce) {
+        Long leetBurgerId = 3L;
         return os.getItens()
                 .stream()
-                .filter(item -> lettuce.getId().equals(item.getIngredient().getId()))
+                .filter(item -> leetBurgerId.equals(item.getIngredient().getId()))
                 .count();
     }
 }

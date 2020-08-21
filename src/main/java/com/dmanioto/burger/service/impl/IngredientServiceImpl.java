@@ -1,7 +1,6 @@
 package com.dmanioto.burger.service.impl;
 
 import com.dmanioto.burger.model.Ingredient;
-import com.dmanioto.burger.model.enuns.IngredientType;
 import com.dmanioto.burger.repository.IngredientRepository;
 import com.dmanioto.burger.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,27 +16,27 @@ public class IngredientServiceImpl implements IngredientService {
 
 	@Override
 	public Ingredient getLettuce() {
-		return repository.findById(IngredientType.LETTUCE.getId()).get();
+		return repository.findById(1L).get();
 	}
 
 	@Override
 	public Ingredient getBacon() {
-		return repository.findById(IngredientType.BACON.getId()).get();
+		return repository.findById(2L).get();
 	}
 
 	@Override
 	public Ingredient getMeatBurger() {
-		return repository.findById(IngredientType.MEAT_BURGER.getId()).get();
+		return repository.findById(3L).get();
 	}
 
 	@Override
 	public Ingredient getEgg() {
-		return repository.findById(IngredientType.EGG.getId()).get();
+		return repository.findById(4L).get();
 	}
 
 	@Override
 	public Ingredient getCheese() {
-		return repository.findById(IngredientType.CHEESE.getId()).get();
+		return repository.findById(5L).get();
 	}
 
 	@Override

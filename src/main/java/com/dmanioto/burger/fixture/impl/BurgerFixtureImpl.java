@@ -3,7 +3,6 @@ package com.dmanioto.burger.fixture.impl;
 import com.dmanioto.burger.fixture.Fixture;
 import com.dmanioto.burger.model.Burger;
 import com.dmanioto.burger.model.Ingredient;
-import com.dmanioto.burger.model.enuns.BurgerType;
 import com.dmanioto.burger.repository.BurgerRepository;
 import com.dmanioto.burger.service.IngredientService;
 import lombok.extern.slf4j.Slf4j;
@@ -34,26 +33,26 @@ public class BurgerFixtureImpl implements Fixture {
         final Ingredient egg = ingredientService.getEgg();
 
         Burger xBacon = Burger.builder()
-                .id(BurgerType.X_BACON.getId())
-                .description(BurgerType.X_BACON.getDescription())
+                .id(1L)
+                .description("X-Bacon")
                 .ingredients(Arrays.asList(bacon, meatBurger, cheese)).build();
         burgerRepository.save(xBacon);
 
         Burger xBurger = Burger.builder()
-                .id(BurgerType.X_BURGER.getId())
-                .description(BurgerType.X_BURGER.getDescription())
+                .id(2L)
+                .description("X-Bacon")
                 .ingredients(Arrays.asList( meatBurger, cheese)).build();
         burgerRepository.save(xBurger);
 
         Burger xEgg = Burger.builder()
-                .id(BurgerType.X_EGG.getId())
-                .description(BurgerType.X_EGG.getDescription())
+                .id(3L)
+                .description("X-Egg")
                 .ingredients(Arrays.asList(egg, meatBurger, cheese)).build();
         burgerRepository.save(xEgg);
 
         Burger xEggBacon = Burger.builder()
-                .id(BurgerType.X_EGG_BACON.getId())
-                .description(BurgerType.X_EGG_BACON.getDescription())
+                .id(4L)
+                .description("X-Egg-Bacon")
                 .ingredients(Arrays.asList(bacon, egg, meatBurger, cheese)).build();
         burgerRepository.save(xEggBacon);
 
