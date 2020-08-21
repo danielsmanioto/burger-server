@@ -4,10 +4,7 @@ import com.dmanioto.burger.model.enuns.BurgerType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -31,9 +28,8 @@ public class Burger {
     }
 
     public BigDecimal getPriceTotal() {
-        return this.ingredients
-                .stream()
-                .map(p -> p.getPrice())
+        return this.ingredients.stream()
+                .map(Ingredient::getPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
