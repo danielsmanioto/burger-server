@@ -30,7 +30,7 @@ public class BurgerController {
 
 	@GetMapping("/{id}")
     public ResponseEntity<Burger> findById(@PathVariable("id") Long id ) {
-		Optional<Burger> burger = Optional.ofNullable(service.getById(id));
+		Optional<Burger> burger = service.getById(id);
 
 		if (!burger.isPresent()) {
 			return ResponseEntity.notFound().build();

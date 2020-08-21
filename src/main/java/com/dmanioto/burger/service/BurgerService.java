@@ -1,21 +1,22 @@
 package com.dmanioto.burger.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.dmanioto.burger.model.Burger;
 
 public interface BurgerService {
 
-	Burger getXBacon();
+	Optional<Burger> getXBacon();
 
-	Burger getXBurger();
+	Optional<Burger> getXBurger();
 
-	Burger getXEgg();
+	Optional<Burger> getXEgg();
 
-	Burger getXEggBacon();
+	Optional<Burger> getXEggBacon();
 
 	List<Burger> findAll();
 
-	Burger getById(Long id);
+	Optional<Burger> getById(Long id);
 
 }

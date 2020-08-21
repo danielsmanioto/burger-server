@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,9 +34,9 @@ public class OrderSaleServiceImplTest {
 	
 	@Test
 	public void checkSaleBasicWithXBacon() {
-		final Burger xBacon = burgerService.getXBacon();
+		final Optional<Burger> xBacon = burgerService.getXBacon();
 		final List<Ingredient> aditionals = new ArrayList<>(); 
-		final OrderSaleDto dto = new OrderSaleDto(xBacon, aditionals);
+		final OrderSaleDto dto = new OrderSaleDto(xBacon.get(), aditionals);
 		
 		final OrderSale os = service.finishOrder(dto);
 
@@ -49,9 +50,9 @@ public class OrderSaleServiceImplTest {
 	
 	@Test
 	public void checkSaleBasicWithXBurger() {
-		final Burger xBurger = burgerService.getXBurger();
+		final Optional<Burger> xBurger = burgerService.getXBurger();
 		final List<Ingredient> aditionals = new ArrayList<>();
-		OrderSaleDto dto = new OrderSaleDto(xBurger, aditionals);
+		OrderSaleDto dto = new OrderSaleDto(xBurger.get(), aditionals);
 		
 		final OrderSale os = service.finishOrder(dto);
 
@@ -65,9 +66,9 @@ public class OrderSaleServiceImplTest {
 	
 	@Test
 	public void checkSaleBasicWithXEGG() {
-		final Burger xEgg = burgerService.getXEgg();
+		final Optional<Burger> xEgg = burgerService.getXEgg();
 		final List<Ingredient> aditionals = new ArrayList<>(); 
-		final OrderSaleDto dto = new OrderSaleDto(xEgg, aditionals);
+		final OrderSaleDto dto = new OrderSaleDto(xEgg.get(), aditionals);
 		
 		final OrderSale os = service.finishOrder(dto);
 		
@@ -81,9 +82,9 @@ public class OrderSaleServiceImplTest {
 	
 	@Test
 	public void checkSaleBasicWithXggBacon() {
-		final Burger xEggBacon = burgerService.getXEggBacon();
+		final Optional<Burger> xEggBacon = burgerService.getXEggBacon();
 		final List<Ingredient> aditionals = new ArrayList<>(); 
-		final OrderSaleDto dto = new OrderSaleDto(xEggBacon, aditionals);
+		final OrderSaleDto dto = new OrderSaleDto(xEggBacon.get(), aditionals);
 		
 		final OrderSale os = service.finishOrder(dto);
 

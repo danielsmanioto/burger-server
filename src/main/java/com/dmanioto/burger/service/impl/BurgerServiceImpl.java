@@ -17,23 +17,23 @@ public class BurgerServiceImpl implements BurgerService {
 	private BurgerRepository repository;
 
 	@Override
-	public Burger getXBacon() {
-		return repository.findById(BurgerType.X_BACON.getId()).get();
+	public Optional<Burger> getXBacon() {
+		return repository.findById(BurgerType.X_BACON.getId());
 	}
 
 	@Override
-	public Burger getXBurger() {
-		return repository.findById(BurgerType.X_BURGER.getId()).get();
+	public Optional<Burger> getXBurger() {
+		return repository.findById(BurgerType.X_BURGER.getId());
 	}
 
 	@Override
-	public Burger getXEgg() {
-		return repository.findById(BurgerType.X_EGG.getId()).get();
+	public Optional<Burger> getXEgg() {
+		return repository.findById(BurgerType.X_EGG.getId());
 	}
 
 	@Override
-	public Burger getXEggBacon() {
-		return repository.findById(BurgerType.X_EGG_BACON.getId()).get();
+	public Optional<Burger> getXEggBacon() {
+		return repository.findById(BurgerType.X_EGG_BACON.getId());
 	}
 
 	@Override
@@ -42,8 +42,7 @@ public class BurgerServiceImpl implements BurgerService {
 	}
 
 	@Override
-	public Burger getById(Long id) {
-		Optional<Burger> burger = repository.findById(id);
-		return burger.isPresent() ? burger.get() : null;
+	public Optional<Burger> getById(Long id) {
+		return repository.findById(id);
 	}
 }

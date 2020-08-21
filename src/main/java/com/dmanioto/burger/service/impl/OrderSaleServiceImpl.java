@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -62,10 +63,10 @@ public class OrderSaleServiceImpl implements OrderSaleService {
     }
 
     private List<OrderItem> saveItensOrderSale(OrderSaleDto dto) {
-        final Burger burger = burgerService.getById(dto.getBurger().getId());
+        final Optional<Burger> burger = burgerService.getById(dto.getBurger().getId());
 
         List<OrderItem> itens = new ArrayList<>();
-        saveIngredients(burger, itens);
+        saveIngredients(burger.get(), itens);
         saveAditionals(dto, itens);
 
         return itens;

@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -59,9 +60,9 @@ public class OrderSaleControllerTest {
 
 	@Test
 	public void finishOrderWithBurgerOfMenu() throws Exception {
-		final Burger xBurger = burgerService.getXBurger();
+		final Optional<Burger> xBurger = burgerService.getXBurger();
 		final List<Ingredient> aditionals = new ArrayList<>();
-		final OrderSaleDto orderDto = new OrderSaleDto(xBurger, aditionals);
+		final OrderSaleDto orderDto = new OrderSaleDto(xBurger.get(), aditionals);
 		final String json = gson.toJson(orderDto);
 
 		mvc.perform(post(URL_POST_FINISH_SALE_ORDER).contentType(CONTENT_TYPE).content(json))
@@ -71,9 +72,9 @@ public class OrderSaleControllerTest {
 
 	@Test
 	public void finishOrderWithBurgerOfPromotionLigth() throws Exception {
-		final Burger xBurgerLigth = burgerService.getXBurger();
+		final Optional<Burger> xBurgerLigth = burgerService.getXBurger();
 		final List<Ingredient> aditionals = Arrays.asList(ingService.getLettuce());
-		final OrderSaleDto orderDto = new OrderSaleDto(xBurgerLigth, aditionals);
+		final OrderSaleDto orderDto = new OrderSaleDto(xBurgerLigth.get(), aditionals);
 
 		final String json = gson.toJson(orderDto);
 
@@ -84,9 +85,9 @@ public class OrderSaleControllerTest {
 
 	@Test
 	public void checkSaleAlotOfMeat() throws Exception {
-		final Burger xBurgerLigth = burgerService.getXBurger();
+		final Optional<Burger> xBurgerLigth = burgerService.getXBurger();
 		final List<Ingredient> aditionals = Arrays.asList(ingService.getMeatBurger(), ingService.getMeatBurger());
-		final OrderSaleDto orderDto = new OrderSaleDto(xBurgerLigth, aditionals);
+		final OrderSaleDto orderDto = new OrderSaleDto(xBurgerLigth.get(), aditionals);
 
 		final String json = gson.toJson(orderDto);
 
@@ -97,9 +98,9 @@ public class OrderSaleControllerTest {
 	
 	@Test
 	public void checkSaleAlotOfCheese() throws Exception {
-		final Burger xBurgerLigth = burgerService.getXBurger();
+		final Optional<Burger> xBurgerLigth = burgerService.getXBurger();
 		final List<Ingredient> aditionals = Arrays.asList(ingService.getCheese(), ingService.getCheese(), ingService.getCheese());
-		final OrderSaleDto orderDto = new OrderSaleDto(xBurgerLigth, aditionals);
+		final OrderSaleDto orderDto = new OrderSaleDto(xBurgerLigth.get(), aditionals);
 
 		final String json = gson.toJson(orderDto);
 
