@@ -12,9 +12,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 @Entity
+@Builder
 @Getter
 @Setter
+@EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
 public class OrderItem {
 
     @Id
@@ -29,10 +32,5 @@ public class OrderItem {
     private Ingredient ingredient;
 
     private BigDecimal priceSale;
-
-    public OrderItem(Ingredient ingredient, BigDecimal price) {
-        this.ingredient = ingredient;
-        this.priceSale = price;
-    }
 
 }

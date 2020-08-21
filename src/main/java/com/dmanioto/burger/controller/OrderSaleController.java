@@ -23,10 +23,14 @@ import com.dmanioto.burger.service.OrderSaleService;
 @RestController
 @RequestMapping("/orders")
 public class OrderSaleController {
-	
-	@Autowired
+
 	private OrderSaleService service;
-	
+
+	@Autowired
+	public OrderSaleController(OrderSaleService service) {
+		this.service = service;
+	}
+
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public OrderSale getById(@PathVariable("id") Long id) {

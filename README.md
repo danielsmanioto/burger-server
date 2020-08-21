@@ -123,6 +123,13 @@ Agora siga os passos na aplicação client
     <b>TravisCI:</b></b> 
 </p>
 
+# Ambientes
+
+<ul>
+  <li>application.properties : produção</li>
+  <li>applications-local.properties : local</li> 
+<ul>
+
 #Usando no Heroku
 
 `heroku login`

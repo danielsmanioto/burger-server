@@ -1,16 +1,21 @@
 package com.dmanioto.burger.model;
 
-import com.dmanioto.burger.model.enuns.BurgerType;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Data
+@Builder
+@Getter
+@Setter
+@EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
 public class Burger {
 
     @Id
@@ -20,12 +25,6 @@ public class Burger {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Ingredient> ingredients;
-
-    public Burger(BurgerType e, List<Ingredient> ingredients) {
-        this.id = e.getId();
-        this.description = e.getDescription();
-        this.ingredients = ingredients;
-    }
 
     public BigDecimal getPriceTotal() {
         return this.ingredients.stream()

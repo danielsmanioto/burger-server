@@ -2,22 +2,17 @@ package com.dmanioto.burger.model;
 
 import lombok.*;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
 @Entity
+@Builder
 @Getter
 @Setter
 @EqualsAndHashCode
-@ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class OrderSale {
 
     @Id
@@ -31,10 +26,6 @@ public class OrderSale {
     private List<OrderDiscount> discounts;
 
     private BigDecimal totalPrice;
-
-    public OrderSale(List<OrderItem> itens) {
-        this.itens = itens;
-    }
 
     public BigDecimal getTotalPriceItens() {
         return this.itens

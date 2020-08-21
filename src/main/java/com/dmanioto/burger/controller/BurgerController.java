@@ -15,8 +15,12 @@ import com.dmanioto.burger.service.BurgerService;
 @RequestMapping("/burgers")
 public class BurgerController {
 
-    @Autowired
     private BurgerService service;
+
+    @Autowired
+    public BurgerController(BurgerService service) {
+        this.service = service;
+    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

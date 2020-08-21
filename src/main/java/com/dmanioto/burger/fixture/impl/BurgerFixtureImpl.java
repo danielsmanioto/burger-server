@@ -3,7 +3,6 @@ package com.dmanioto.burger.fixture.impl;
 import com.dmanioto.burger.fixture.Fixture;
 import com.dmanioto.burger.model.Burger;
 import com.dmanioto.burger.model.Ingredient;
-import com.dmanioto.burger.model.builder.BurgerBuilder;
 import com.dmanioto.burger.model.enuns.BurgerType;
 import com.dmanioto.burger.repository.BurgerRepository;
 import com.dmanioto.burger.service.IngredientService;
@@ -17,11 +16,15 @@ import java.util.Arrays;
 @Component
 public class BurgerFixtureImpl implements Fixture {
 
-    @Autowired
-    private IngredientService ingredientService;
+    private final IngredientService ingredientService;
+
+    private final BurgerRepository burgerRepository;
 
     @Autowired
-    private BurgerRepository repository;
+    public BurgerFixtureImpl(IngredientService ingredientService, BurgerRepository repository) {
+        this.ingredientService = ingredientService;
+        this.burgerRepository = repository;
+    }
 
     @Override
     public void createPreDefinedData() {
@@ -30,17 +33,29 @@ public class BurgerFixtureImpl implements Fixture {
         final Ingredient cheese = ingredientService.getCheese();
         final Ingredient egg = ingredientService.getEgg();
 
-        Burger xBacon = new BurgerBuilder().withType(BurgerType.X_BACON).withIngredients(Arrays.asList(bacon, meatBurger, cheese)).createBurger();
-        repository.save(xBacon);
+        Burger xBacon = Burger.builder()
+                .id(BurgerType.X_BACON.getId())
+                .description(BurgerType.X_BACON.getDescription())
+                .ingredients(Arrays.asList(bacon, meatBurger, cheese)).build();
+        burgerRepository.save(xBacon);
 
-        Burger xBurger = new BurgerBuilder().withType(BurgerType.X_BURGER).withIngredients(Arrays.asList(meatBurger, cheese)).createBurger();
-        repository.save(xBurger);
+        Burger xBurger = Burger.builder()
+                .id(BurgerType.X_BURGER.getId())
+                .description(BurgerType.X_BURGER.getDescription())
+                .ingredients(Arrays.asList( meatBurger, cheese)).build();
+        burgerRepository.save(xBurger);
 
-        Burger xEgg = new BurgerBuilder().withType(BurgerType.X_EGG).withIngredients(Arrays.asList(egg, meatBurger, cheese)).createBurger();
-        repository.save(xEgg);
+        Burger xEgg = Burger.builder()
+                .id(BurgerType.X_EGG.getId())
+                .description(BurgerType.X_EGG.getDescription())
+                .ingredients(Arrays.asList(egg, meatBurger, cheese)).build();
+        burgerRepository.save(xEgg);
 
-        Burger xEggBacon = new BurgerBuilder().withType(BurgerType.X_EGG_BACON).withIngredients(Arrays.asList(bacon, egg, meatBurger, cheese)).createBurger();
-        repository.save(xEggBacon);
+        Burger xEggBacon = Burger.builder()
+                .id(BurgerType.X_EGG_BACON.getId())
+                .description(BurgerType.X_EGG_BACON.getDescription())
+                .ingredients(Arrays.asList(bacon, egg, meatBurger, cheese)).build();
+        burgerRepository.save(xEggBacon);
 
         log.info("Burgers created as success");
     }

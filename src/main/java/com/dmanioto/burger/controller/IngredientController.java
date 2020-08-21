@@ -15,9 +15,13 @@ import com.dmanioto.burger.service.IngredientService;
 @RequestMapping("/ingredients")
 public class IngredientController {
 	
-	@Autowired
 	private IngredientService service;
-	
+
+	@Autowired
+	public IngredientController(IngredientService service) {
+		this.service = service;
+	}
+
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public List<Ingredient> findAll() {

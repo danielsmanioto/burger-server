@@ -1,15 +1,18 @@
 package com.dmanioto.burger.model;
 
-import com.dmanioto.burger.model.enuns.IngredientType;
 import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
-import javax.persistence.*;
-
 @Entity
-@Data
+@Builder
+@Getter
+@Setter
+@EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
 public class Ingredient {
 	
 	@Id
@@ -19,10 +22,4 @@ public class Ingredient {
 	
 	private BigDecimal price;
 
-	public Ingredient(IngredientType e, BigDecimal price) {
-		this.id = e.getId();
-		this.description = e.getDescription();
-		this.price = price;
-	}
-	
 }

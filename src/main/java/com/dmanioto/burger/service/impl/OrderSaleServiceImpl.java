@@ -1,25 +1,19 @@
 package com.dmanioto.burger.service.impl;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.dmanioto.burger.model.*;
-import com.dmanioto.burger.model.builder.OrderItemBuilder;
-import com.dmanioto.burger.model.builder.OrderSaleBuilder;
+import com.dmanioto.burger.model.Burger;
+import com.dmanioto.burger.model.Ingredient;
+import com.dmanioto.burger.model.OrderItem;
+import com.dmanioto.burger.model.OrderSale;
+import com.dmanioto.burger.model.dto.OrderSaleDto;
+import com.dmanioto.burger.repository.OrderSaleRepository;
+import com.dmanioto.burger.service.*;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dmanioto.burger.model.dto.OrderSaleDto;
-import com.dmanioto.burger.repository.OrderSaleRepository;
-import com.dmanioto.burger.service.BurgerService;
-import com.dmanioto.burger.service.IngredientService;
-import com.dmanioto.burger.service.OrderItemService;
-import com.dmanioto.burger.service.OrderSaleService;
-import com.dmanioto.burger.service.PromotionDiscount;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -61,9 +55,10 @@ public class OrderSaleServiceImpl implements OrderSaleService {
     }
 
     private OrderSale saveOrderSale(List<OrderItem> itens) {
-        return repository.save(new OrderSaleBuilder()
-                .withItens(itens)
-                .createOrderSale());
+        return repository.save(OrderSale
+                .builder()
+                .itens(itens)
+                .build());
     }
 
     private List<OrderItem> saveItensOrderSale(OrderSaleDto dto) {
@@ -80,10 +75,10 @@ public class OrderSaleServiceImpl implements OrderSaleService {
         burger.getIngredients()
                 .stream()
                 .forEach(ingredient -> {
-                    OrderItem item = new OrderItemBuilder().
-                            withIngredient(ingredient).
-                            withPrice(ingredient.getPrice()).
-                            createOrderItem();
+                    OrderItem item = OrderItem.builder()
+                            .ingredient(ingredient)
+                            .priceSale(ingredient.getPrice())
+                            .build();
                     orderItemService.save(item);
                     itens.add(orderItemService.getOrderItem(item));
                 });
@@ -96,10 +91,10 @@ public class OrderSaleServiceImpl implements OrderSaleService {
                     .stream()
                     .forEach(ingredient -> {
                         Ingredient ingredientAditional = ingredientService.getById(ingredient.getId());
-                        OrderItem item = new OrderItemBuilder().
-                                withIngredient(ingredientAditional)
-                                .withPrice(ingredientAditional.getPrice())
-                                .createOrderItem();
+                        OrderItem item = OrderItem.builder()
+                                .ingredient(ingredientAditional)
+                                .priceSale(ingredient.getPrice())
+                                .build();
                         orderItemService.save(item);
 
                         OrderItem orderItem = orderItemService.getOrderItem(item);
