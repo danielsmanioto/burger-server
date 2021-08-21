@@ -30,7 +30,7 @@ public class OrderSale {
     public BigDecimal getTotalPriceItens() {
         return this.itens
                 .stream()
-                .map(e -> e.getPriceSale())
+                .map(OrderItem::getPriceSale)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 

@@ -21,13 +21,18 @@ https://ds-burger-server.herokuapp.com/swagger-ui.html
 
 # Overview Projeto
 
-<img src="overview.png">
+<img src="docs/overview.png">
 
 # Server/API - Arquitetura e Design
 
-<img src="arq.png">
+<img src="docs/arq.png">
+
+# Class Diagram
+
+<img src="docs/class_diagram.png">
 
 # Instruções de como executar com Docker
+cd devops
 execute o arquivo build.sh (exemplo no linux-> ./build.sh) <br>
 execute o arquivo run.sh <br>
 Verificar se API está no ar -> http://localhost:80
