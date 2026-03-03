@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public class IngredientControllerIT {
+public class BurgerControllerIT {
 
     private MockMvc mvc;
 
@@ -30,29 +30,31 @@ public class IngredientControllerIT {
     }
 
     @Test
-    public void findAllIgredients() throws Exception {
-        final String json = "[{\"id\":1,\"description\":\"Alface\",\"price\":0.40},{\"id\":2,\"description\":\"Bacon\",\"price\":2.00},{\"id\":3,\"description\":\"Hamburguer de Carne\",\"price\":3.00},{\"id\":4,\"description\":\"Ovo\",\"price\":0.80},{\"id\":5,\"description\":\"Queijo\",\"price\":1.50}]";
-
-        mvc.perform(get("/ingredients"))
-                .andExpect(content().json(json))
+    public void findAllBurgers() throws Exception {
+        mvc.perform(get("/burgers"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
-                .andExpect(jsonPath("$.[0].id").value("1"))
-                .andExpect(jsonPath("$.[0].description").value("Alface"))
-                .andExpect(jsonPath("$.[0].price").value("0.4"))
-                .andExpect(jsonPath("$.[1].id").value("2"))
-                .andExpect(jsonPath("$.[1].description").value("Bacon"))
-                .andExpect(jsonPath("$.[1].price").value("2.0"));
+                .andExpect(jsonPath("$.[0].id").value(1))
+                .andExpect(jsonPath("$.[0].description").value("X-Bacon"))
+                .andExpect(jsonPath("$.[1].id").value(2))
+                .andExpect(jsonPath("$.[2].id").value(3))
+                .andExpect(jsonPath("$.[2].description").value("X-Egg"))
+                .andExpect(jsonPath("$.[3].id").value(4))
+                .andExpect(jsonPath("$.[3].description").value("X-Egg-Bacon"));
     }
 
     @Test
-    public void findIgredientsById() throws Exception {
-        final String json = "{\"id\":1,\"description\":\"Alface\",\"price\":0.40}";
-
-        mvc.perform(get("/ingredients/1"))
-                .andExpect(content().json(json))
+    public void findBurgerById() throws Exception {
+        mvc.perform(get("/burgers/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value("1"))
-                .andExpect(jsonPath("$.description").value("Alface"));
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.description").value("X-Bacon"));
     }
+
+    @Test
+    public void findBurgerByIdNotFound() throws Exception {
+        mvc.perform(get("/burgers/999"))
+                .andExpect(status().isNotFound());
+    }
+
 }
