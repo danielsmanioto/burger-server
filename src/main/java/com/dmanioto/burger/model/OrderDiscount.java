@@ -22,6 +22,7 @@ public class OrderDiscount {
 	
 	private String description;
 	
+	@Column(name = "discount_value")
 	private BigDecimal value;
 	
 	@JsonIgnore
